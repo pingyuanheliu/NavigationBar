@@ -7,6 +7,7 @@
 //
 
 #import "A2ViewController.h"
+#import "UIViewController+handle.h"
 
 @interface A2ViewController ()
 
@@ -20,13 +21,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"A2";
-    //
-    self.listCV.contentInset = UIEdgeInsetsMake(200.0, 0.0, 0.0, 0.0);
     CGRect rect = [UIScreen mainScreen].bounds;
-    rect.origin.y = -200;
-    rect.size.height = 200.0;
-    UIView *rView = [[UIView alloc] initWithFrame:rect];
-    rView.backgroundColor = [UIColor redColor];
+    CGFloat imgHeight = 251.0*414.0/rect.size.width;
+    CGFloat offset = [UIViewController cx_navTopHeight] + 44.0;
+    //
+    self.listCV.contentInset = UIEdgeInsetsMake(imgHeight - offset, 0.0, 0.0, 0.0);
+    //
+    rect.origin.y = -imgHeight;
+    rect.size.height = imgHeight;
+    UIImageView *rView = [[UIImageView alloc] initWithFrame:rect];
+    rView.image = [UIImage imageNamed:@"top"];
     rView.userInteractionEnabled = YES;
     [rView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView:)]];
     [self.listCV addSubview:rView];
@@ -56,7 +60,7 @@
     if (indexPath.row == 0) {
         cell.backgroundColor = [UIColor greenColor];
     }else {
-        cell.backgroundColor = [UIColor yellowColor];
+        cell.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:0.3];
     }
     return cell;
 }

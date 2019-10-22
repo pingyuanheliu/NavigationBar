@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6A3E7B2F235D7D50006CE67A /* UINavigationController+handle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3E7B2E235D7D50006CE67A /* UINavigationController+handle.m */; };
 		6A3E7B32235D7E28006CE67A /* UIViewController+handle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3E7B31235D7E28006CE67A /* UIViewController+handle.m */; };
+		6A3E7B35235E8626006CE67A /* LLNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3E7B34235E8626006CE67A /* LLNavigationBar.m */; };
 		6A9ED89923594BA100757EF1 /* B1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A9ED89823594BA100757EF1 /* B1ViewController.m */; };
 		6A9ED89C23594BAF00757EF1 /* B2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A9ED89B23594BAF00757EF1 /* B2ViewController.m */; };
 		6A9ED8A223594BE200757EF1 /* D1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A9ED8A123594BE200757EF1 /* D1ViewController.m */; };
@@ -22,7 +23,6 @@
 		6A9ED8BA235991A100757EF1 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A9ED8B9235991A100757EF1 /* UIImage+Color.m */; };
 		6A9ED8BD235D503200757EF1 /* UINavigationBar+handle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A9ED8BC235D503200757EF1 /* UINavigationBar+handle.m */; };
 		6AFD3D8B2357F86B00A820DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AFD3D8A2357F86B00A820DC /* AppDelegate.m */; };
-		6AFD3D8E2357F86B00A820DC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AFD3D8D2357F86B00A820DC /* ViewController.m */; };
 		6AFD3D912357F86B00A820DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFD3D8F2357F86B00A820DC /* Main.storyboard */; };
 		6AFD3D932357F88F00A820DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AFD3D922357F88F00A820DC /* Assets.xcassets */; };
 		6AFD3D962357F88F00A820DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFD3D942357F88F00A820DC /* LaunchScreen.storyboard */; };
@@ -34,6 +34,8 @@
 		6A3E7B2E235D7D50006CE67A /* UINavigationController+handle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+handle.m"; sourceTree = "<group>"; };
 		6A3E7B30235D7E28006CE67A /* UIViewController+handle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+handle.h"; sourceTree = "<group>"; };
 		6A3E7B31235D7E28006CE67A /* UIViewController+handle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+handle.m"; sourceTree = "<group>"; };
+		6A3E7B33235E8625006CE67A /* LLNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLNavigationBar.h; sourceTree = "<group>"; };
+		6A3E7B34235E8626006CE67A /* LLNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LLNavigationBar.m; sourceTree = "<group>"; };
 		6A9ED89723594BA100757EF1 /* B1ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = B1ViewController.h; sourceTree = "<group>"; };
 		6A9ED89823594BA100757EF1 /* B1ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = B1ViewController.m; sourceTree = "<group>"; };
 		6A9ED89A23594BAF00757EF1 /* B2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = B2ViewController.h; sourceTree = "<group>"; };
@@ -61,8 +63,6 @@
 		6AFD3D862357F86B00A820DC /* NavigationBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavigationBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AFD3D892357F86B00A820DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6AFD3D8A2357F86B00A820DC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6AFD3D8C2357F86B00A820DC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		6AFD3D8D2357F86B00A820DC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		6AFD3D902357F86B00A820DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6AFD3D922357F88F00A820DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6AFD3D952357F88F00A820DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -102,8 +102,6 @@
 			children = (
 				6AFD3D892357F86B00A820DC /* AppDelegate.h */,
 				6AFD3D8A2357F86B00A820DC /* AppDelegate.m */,
-				6AFD3D8C2357F86B00A820DC /* ViewController.h */,
-				6AFD3D8D2357F86B00A820DC /* ViewController.m */,
 				6A9ED8AC23595A8A00757EF1 /* A1ViewController.h */,
 				6A9ED8AD23595A8A00757EF1 /* A1ViewController.m */,
 				6A9ED8AF23595A9600757EF1 /* A2ViewController.h */,
@@ -124,6 +122,8 @@
 				6A9ED8A723594C3800757EF1 /* E1ViewController.m */,
 				6A9ED8A923594C4400757EF1 /* E2ViewController.h */,
 				6A9ED8AA23594C4400757EF1 /* E2ViewController.m */,
+				6A3E7B33235E8625006CE67A /* LLNavigationBar.h */,
+				6A3E7B34235E8626006CE67A /* LLNavigationBar.m */,
 				6A9ED8BB235D503200757EF1 /* UINavigationBar+handle.h */,
 				6A9ED8BC235D503200757EF1 /* UINavigationBar+handle.m */,
 				6A3E7B2D235D7D50006CE67A /* UINavigationController+handle.h */,
@@ -211,7 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6AFD3D8E2357F86B00A820DC /* ViewController.m in Sources */,
+				6A3E7B35235E8626006CE67A /* LLNavigationBar.m in Sources */,
 				6A9ED89923594BA100757EF1 /* B1ViewController.m in Sources */,
 				6A9ED8AE23595A8A00757EF1 /* A1ViewController.m in Sources */,
 				6A3E7B2F235D7D50006CE67A /* UINavigationController+handle.m in Sources */,

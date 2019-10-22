@@ -8,6 +8,8 @@
 
 #import "E2ViewController.h"
 #import "UIImage+Color.h"
+#import "UIViewController+handle.h"
+#import "UINavigationController+handle.h"
 
 @interface E2ViewController ()
 
@@ -17,17 +19,29 @@
 
 @implementation E2ViewController
 
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        self.navBarAlpha = 1.0;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"E2";
-    //
-    self.listCV.contentInset = UIEdgeInsetsMake(200.0-88.0, 0.0, 0.0, 0.0);
     CGRect rect = [UIScreen mainScreen].bounds;
-    rect.origin.y = -200;
-    rect.size.height = 200.0;
-    UIView *rView = [[UIView alloc] initWithFrame:rect];
-    rView.backgroundColor = [UIColor redColor];
+    CGFloat imgHeight = 251.0*414.0/rect.size.width;
+    CGFloat offset = [UIViewController cx_navTopHeight] + 44.0;
+    //
+    self.listCV.contentInset = UIEdgeInsetsMake(imgHeight - offset, 0.0, 0.0, 0.0);
+    //
+    rect.origin.y = -imgHeight;
+    rect.size.height = imgHeight;
+    UIImageView *rView = [[UIImageView alloc] initWithFrame:rect];
+    rView.image = [UIImage imageNamed:@"top"];
     rView.userInteractionEnabled = YES;
     [rView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView:)]];
     [self.listCV addSubview:rView];
@@ -35,12 +49,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    UIColor *bColor = [UIColor colorWithRed:60.0/255.0 green:131.0/255.0 blue:255.0/255.0 alpha:1.0];
-    UIImage *bImage = [UIImage imageWithColor:bColor];
-    [self.navigationController.navigationBar setBackgroundImage:bImage forBarMetrics:UIBarMetricsDefault];
-    UIColor *sColor = [UIColor purpleColor];
-    UIImage *sImage = [UIImage imageWithColor:sColor];
-    [self.navigationController.navigationBar setShadowImage:sImage];
 }
 
 - (void)tapView:(UITapGestureRecognizer *)tap {
@@ -60,7 +68,7 @@
     if (indexPath.row == 0) {
         cell.backgroundColor = [UIColor greenColor];
     }else {
-        cell.backgroundColor = [UIColor yellowColor];
+        cell.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:0.3];
     }
     return cell;
 }

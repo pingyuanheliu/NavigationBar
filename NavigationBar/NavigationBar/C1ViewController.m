@@ -9,12 +9,11 @@
 #import "C1ViewController.h"
 #import "UIImage+Color.h"
 #import "UINavigationBar+handle.h"
+#import "UIViewController+handle.h"
 
 @interface C1ViewController ()
 
 @property (weak, nonatomic) IBOutlet UICollectionView *listCV;
-@property (nonatomic, strong) UIImage *bImage;
-@property (nonatomic, strong) UIImage *sImage;
 @property (nonatomic, assign) BOOL isBarClear;
 
 @end
@@ -24,25 +23,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"C1";
-    self.view.backgroundColor = [UIColor orangeColor];
+    self.title = @"演示三";
     self.listCV.backgroundColor = [UIColor lightGrayColor];
     //
     UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"不透明" style:UIBarButtonItemStylePlain target:self action:@selector(clickRight:)];
     self.navigationItem.rightBarButtonItem = right;
+    CGRect rect = [UIScreen mainScreen].bounds;
+    CGFloat imgHeight = 251.0*414.0/rect.size.width;
+    CGFloat offset = [UIViewController cx_navTopHeight] + 44.0;
     //
-//    self.listCV.contentInset = UIEdgeInsetsMake(200.0-88.0, 0.0, 0.0, 0.0);
-//    CGRect rect = [UIScreen mainScreen].bounds;
-//    rect.origin.y = -200;
-//    rect.size.height = 200.0;
-//    UIView *rView = [[UIView alloc] initWithFrame:rect];
-//    rView.backgroundColor = [UIColor redColor];
-//    rView.userInteractionEnabled = YES;
-//    [rView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView:)]];
-//    [self.listCV addSubview:rView];
+    self.listCV.contentInset = UIEdgeInsetsMake(imgHeight - offset, 0.0, 0.0, 0.0);
     //
-    self.bImage = [self.navigationController.navigationBar backgroundImageForBarMetrics:UIBarMetricsDefault];
-    self.sImage = [self.navigationController.navigationBar shadowImage];
+    rect.origin.y = -imgHeight;
+    rect.size.height = imgHeight;
+    UIImageView *rView = [[UIImageView alloc] initWithFrame:rect];
+    rView.image = [UIImage imageNamed:@"top"];
+    rView.userInteractionEnabled = YES;
+    [rView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView:)]];
+    [self.listCV addSubview:rView];
+    //
     NSLog(@"bImage1:%@",[self.navigationController.navigationBar shadowImage]);
     CGFloat offsetY = self.listCV.contentOffset.y;
     NSLog(@"offsetY1:%f",offsetY);
@@ -51,10 +50,10 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     NSLog(@"==viewWillAppear1==");
-    UIColor *color = [UIColor colorWithRed:60.0/255.0 green:131.0/255.0 blue:255.0/255.0 alpha:0.5];
-    UIImage *image = [UIImage imageWithColor:color];
-    [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+//    UIColor *color = [UIColor colorWithRed:60.0/255.0 green:131.0/255.0 blue:255.0/255.0 alpha:0.5];
+//    UIImage *image = [UIImage imageWithColor:color];
+//    [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     self.isBarClear = YES;
     NSLog(@"==viewWillAppear2==");
@@ -80,20 +79,23 @@
     if (self.isBarClear) {
         [sender setTitle:@"不透明"];
         UINavigationBar *bar = self.navigationController.navigationBar;
-//        [bar setTranslucent:YES];
+        [bar setTranslucent:YES];
 //        [bar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
 //        [bar setShadowImage:[UIImage new]];
-        [bar cx_setBackgroudImage:[UIImage new]];
+        [UIView animateWithDuration:0.35 animations:^{
+            UIColor *color = [UIColor purpleColor];
+            color = [color colorWithAlphaComponent:0.0];
+            self.navigationController.navigationBar.bgImgV.backgroundColor = color;
+        }];
         NSLog(@"==YES=frame==:%@==%@==%@",NSStringFromCGRect(self.listCV.frame),NSStringFromCGRect(self.view.frame),NSStringFromUIEdgeInsets(self.listCV.contentInset));
     }else {
         [sender setTitle:@"透明"];
         UINavigationBar *bar = self.navigationController.navigationBar;
-//        [bar setTranslucent:NO];
-        UIColor *color = [UIColor orangeColor];
-        UIImage *image = [UIImage imageWithColor:color];
+        [bar setTranslucent:NO];
+//        UIColor *color = [UIColor orangeColor];
+//        UIImage *image = [UIImage imageWithColor:color];
 //        [bar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
 //        [bar setShadowImage:self.sImage];
-        [bar cx_setBackgroudImage:image];
         NSLog(@"==NO=frame==:%@==%@==%@",NSStringFromCGRect(self.listCV.frame),NSStringFromCGRect(self.view.frame),NSStringFromUIEdgeInsets(self.listCV.contentInset));
     }
     NSLog(@"offset:%@==%@",NSStringFromCGPoint(self.listCV.contentOffset), NSStringFromUIEdgeInsets(self.listCV.contentInset));
@@ -112,7 +114,7 @@
     if (indexPath.row == 0) {
         cell.backgroundColor = [UIColor greenColor];
     }else {
-        cell.backgroundColor = [UIColor yellowColor];
+        cell.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:0.3];
     }
     return cell;
 }

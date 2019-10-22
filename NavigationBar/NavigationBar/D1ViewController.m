@@ -7,6 +7,9 @@
 //
 
 #import "D1ViewController.h"
+#import "UIViewController+handle.h"
+#import "UINavigationBar+handle.h"
+#import "UINavigationController+handle.h"
 
 @interface D1ViewController ()
 
@@ -16,20 +19,33 @@
 
 @implementation D1ViewController
 
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        NSLog(@"==D1ViewController==:%@",self.navigationController);
+        self.navigationController.useCustom = YES;
+        self.navBarAlpha = 0.0;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"D1";
-    //
-    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"Test" style:UIBarButtonItemStylePlain target:self action:@selector(clickRight:)];
-    self.navigationItem.rightBarButtonItem = right;
-    //
-    self.listCV.contentInset = UIEdgeInsetsMake(200.0-88.0, 0.0, 0.0, 0.0);
+    self.title = @"演示四";
+    NSLog(@"==1==:%@===%@",self.navigationController,self.navigationController.delegate);
+    [self updateNavBar:0.0];
     CGRect rect = [UIScreen mainScreen].bounds;
-    rect.origin.y = -200;
-    rect.size.height = 200.0;
-    UIView *rView = [[UIView alloc] initWithFrame:rect];
-    rView.backgroundColor = [UIColor redColor];
+    CGFloat imgHeight = 251.0*414.0/rect.size.width;
+    CGFloat offset = [UIViewController cx_navTopHeight] + 44.0;
+    //
+    self.listCV.contentInset = UIEdgeInsetsMake(imgHeight - offset, 0.0, 0.0, 0.0);
+    //
+    rect.origin.y = -imgHeight;
+    rect.size.height = imgHeight;
+    UIImageView *rView = [[UIImageView alloc] initWithFrame:rect];
+    rView.image = [UIImage imageNamed:@"top"];
     rView.userInteractionEnabled = YES;
     [rView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView:)]];
     [self.listCV addSubview:rView];
@@ -37,10 +53,6 @@
 
 - (void)tapView:(UITapGestureRecognizer *)tap {
     NSLog(@"tap");
-}
-
-- (void)clickRight:(UIBarButtonItem *)sender {
-    [self.navigationController.navigationBar setTranslucent:!self.navigationController.navigationBar.isTranslucent];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -56,7 +68,7 @@
     if (indexPath.row == 0) {
         cell.backgroundColor = [UIColor greenColor];
     }else {
-        cell.backgroundColor = [UIColor yellowColor];
+        cell.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:0.3];
     }
     return cell;
 }

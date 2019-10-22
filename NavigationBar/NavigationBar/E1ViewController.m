@@ -12,7 +12,7 @@
 #import "UINavigationBar+handle.h"
 #import "UINavigationController+handle.h"
 
-@interface E1ViewController ()<UIScrollViewDelegate,UINavigationControllerDelegate,UINavigationBarDelegate>
+@interface E1ViewController ()<UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *listCV;
 @property (nonatomic, assign) BOOL beginDragging;
@@ -21,19 +21,33 @@
 
 @implementation E1ViewController
 
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        NSLog(@"==E1ViewController==:%@",self.navigationController);
+        self.navigationController.useCustom = YES;
+        self.navBarAlpha = 0.0;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"E1";
-    self.navBarAlpha = 0.0;
+    self.title = @"演示五";
     self.beginDragging = NO;
-    //
-    self.listCV.contentInset = UIEdgeInsetsMake(200.0-88.0, 0.0, 0.0, 0.0);
+    [self updateNavBar:0.0];
     CGRect rect = [UIScreen mainScreen].bounds;
-    rect.origin.y = -200;
-    rect.size.height = 200.0;
-    UIView *rView = [[UIView alloc] initWithFrame:rect];
-    rView.backgroundColor = [UIColor redColor];
+    CGFloat imgHeight = 251.0*414.0/rect.size.width;
+    CGFloat navHeight = [UIViewController cx_navTopHeight] + 44.0;
+    //
+    self.listCV.contentInset = UIEdgeInsetsMake(imgHeight - navHeight, 0.0, 0.0, 0.0);
+    //
+    rect.origin.y = -imgHeight;
+    rect.size.height = imgHeight;
+    UIImageView *rView = [[UIImageView alloc] initWithFrame:rect];
+    rView.image = [UIImage imageNamed:@"top"];
     rView.userInteractionEnabled = YES;
     [rView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView:)]];
     [self.listCV addSubview:rView];
@@ -58,24 +72,22 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offsetY = scrollView.contentOffset.y;
     if (self.beginDragging) {
-        offsetY = offsetY + 200.0;
+        CGRect rect = [UIScreen mainScreen].bounds;
+        CGFloat imgHeight = 251.0*414.0/rect.size.width;
+        CGFloat navHeight = [UIViewController cx_navTopHeight] + 44.0;
+        CGFloat height = MAX(1.0, imgHeight - navHeight);
+        offsetY = offsetY + imgHeight;
         CGFloat alpha = 0.0;
         if (offsetY <= 0.0) {
             alpha = 0.0;
-        }else if (offsetY < 112.0) {
-            alpha = offsetY/112.0;
+        }else if (offsetY < height) {
+            alpha = offsetY/height;
         }else {
             alpha = 1.0;
         }
         self.navBarAlpha = alpha;
         NSLog(@"offsetY:%f alpha:%f",offsetY, alpha);
-        if (alpha < 1.0) {
-            [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-        }else {
-            UIColor *sColor = [UIColor purpleColor];
-            UIImage *sImage = [UIImage imageWithColor:sColor];
-            [self.navigationController.navigationBar setShadowImage:sImage];
-        }
+        [self updateNavBar:alpha];
     }else {
         NSLog(@"not drag offsetY:%f",offsetY);
     }
@@ -104,7 +116,7 @@
     if (indexPath.row == 0) {
         cell.backgroundColor = [UIColor greenColor];
     }else {
-        cell.backgroundColor = [UIColor yellowColor];
+        cell.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:0.3];
     }
     return cell;
 }

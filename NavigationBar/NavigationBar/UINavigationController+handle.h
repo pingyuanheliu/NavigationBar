@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
+@interface UINavigationController (handle)<UINavigationControllerDelegate>
 
-@interface UINavigationController (handle)<UINavigationControllerDelegate,UINavigationBarDelegate>
+//是否使用子定义导航背景
+@property (nonatomic, assign) BOOL useCustom;
 
 @end
-
-NS_ASSUME_NONNULL_END

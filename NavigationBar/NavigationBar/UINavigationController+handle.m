@@ -21,35 +21,20 @@
         SEL swizzledSelector = NSSelectorFromString(@"et__updateInteractiveTransition:");
         Method originalMethod = class_getInstanceMethod([self class], originalSelector);
         Method swizzledMethod = class_getInstanceMethod([self class], swizzledSelector);
-        method_exchangeImplementations(originalMethod, swizzledMethod);
-        //
-        SEL originalSelector1 = NSSelectorFromString(@"_cancelInteractiveTransition");
-        SEL swizzledSelector1 = NSSelectorFromString(@"et__cancelInteractiveTransition");
-        Method originalMethod1 = class_getInstanceMethod([self class], originalSelector1);
-        Method swizzledMethod1 = class_getInstanceMethod([self class], swizzledSelector1);
-        method_exchangeImplementations(originalMethod1, swizzledMethod1);
-        //
-        SEL originalSelector2 = NSSelectorFromString(@"_finishInteractiveTransition");
-        SEL swizzledSelector2 = NSSelectorFromString(@"et__finishInteractiveTransition");
-        Method originalMethod2 = class_getInstanceMethod([self class], originalSelector2);
-        Method swizzledMethod2 = class_getInstanceMethod([self class], swizzledSelector2);
-        method_exchangeImplementations(originalMethod2, swizzledMethod2);
+        if (class_addMethod([self class], originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(originalMethod))) {
+            class_replaceMethod([self class], swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
+        }else {
+            method_exchangeImplementations(originalMethod, swizzledMethod);
+        }
     }
-}
-
-- (void)et__cancelInteractiveTransition {
-    [self et__cancelInteractiveTransition];
-    NSLog(@"et__cancelInteractiveTransition");
-}
-
-- (void)et__finishInteractiveTransition {
-    [self et__finishInteractiveTransition];
-    NSLog(@"et__finishInteractiveTransition");
 }
 
 // 交换的方法，监控滑动手势
 - (void)et__updateInteractiveTransition:(CGFloat)percentComplete {
     [self et__updateInteractiveTransition:(percentComplete)];
+    if (!self.useCustom) {
+        return;
+    }
     UIViewController *topVC = self.topViewController;
     if (topVC != nil) {
         id<UIViewControllerTransitionCoordinator> coor = topVC.transitionCoordinator;
@@ -57,30 +42,50 @@
             // 随着滑动的过程设置导航栏透明度渐变
             UIViewController *fromVC = [coor viewControllerForKey:UITransitionContextFromViewControllerKey];
             UIViewController *toVC = [coor viewControllerForKey:UITransitionContextToViewControllerKey];
-            CGFloat nowAlpha = fabs(toVC.navBarAlpha - fromVC.navBarAlpha) * percentComplete;
-            NSLog(@"from:%@, to:%@ ==percent:%f==alpha:%f",fromVC, toVC, percentComplete,nowAlpha);
-            UIColor *color = [UIColor purpleColor];
-            color = [color colorWithAlphaComponent:nowAlpha];
-            UIImage *image = [UIImage imageWithColor:color];
-            [self.navigationBar cx_setBackgroudImage:image];
+            CGFloat toAlpha = toVC.navBarAlpha;
+            CGFloat fromAlpha = fromVC.navBarAlpha;
+            CGFloat curAlpha = fromAlpha + (toAlpha - fromAlpha)*percentComplete;
+            NSLog(@"from:%@, to:%@ ==percent:%f==alpha:%f",fromVC, toVC, percentComplete,curAlpha);
+            UIColor *tint = topVC.navigationController.navigationBar.barTintColor;
+            NSLog(@"tint1:%@",tint);
+            tint = [tint colorWithAlphaComponent:curAlpha];
+            NSLog(@"tint2:%@",tint);
+            [self.navigationBar cx_setBackgroudColor:tint];
         }
     }
 }
 
-#pragma mark - UINavigationBarDelegate
+#pragma mark - Get & Set
 
-- (void)navigationBar:(UINavigationBar *)navigationBar didPushItem:(UINavigationItem *)item {
-    NSLog(@"push:%@",self.viewControllers);
+- (BOOL)useCustom {
+    id object = objc_getAssociatedObject(self, @selector(useCustom));
+    if ([object isKindOfClass:[NSNumber class]]) {
+        return [object boolValue];
+    }else {
+        return NO;
+    }
 }
-- (void)navigationBar:(UINavigationBar *)navigationBar didPopItem:(UINavigationItem *)item {
-    NSLog(@"pop:%@",self.viewControllers);
+
+- (void)setUseCustom:(BOOL)useCustom {
+    NSLog(@"use custom1:%@==%@==%@",self,self.topViewController,self.delegate);
+    objc_setAssociatedObject(self, @selector(useCustom), [NSNumber numberWithBool:useCustom], OBJC_ASSOCIATION_COPY_NONATOMIC);
+    if (useCustom) {
+        self.delegate = self;
+    }else {
+        self.delegate = nil;
+    }
+    NSLog(@"use custom2:%@",self.delegate);
 }
 
 #pragma mark - UINavigationControllerDelegate
 
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     NSLog(@"willShowViewController:%@",viewController);
+    if (!self.useCustom) {
+        return;
+    }
     UIViewController *topVC = self.topViewController;
+    
     if (topVC != nil) {
         id<UIViewControllerTransitionCoordinator> coor = topVC.transitionCoordinator;
         if (coor != nil) {
@@ -89,15 +94,39 @@
             UIViewController *toVC = [coor viewControllerForKey:UITransitionContextToViewControllerKey];
             NSLog(@"fromVC:%@",fromVC);
             NSLog(@"toVC:%@",toVC);
+            //非手势交互(点击按钮)
+            if (!coor.isInteractive) {
+                [UIView animateWithDuration:coor.transitionDuration animations:^{
+                    UIColor *tint = navigationController.navigationBar.barTintColor;
+                    NSLog(@"tint1:%@",tint);
+                    tint = [tint colorWithAlphaComponent:toVC.navBarAlpha];
+                    NSLog(@"tint2:%@",tint);
+                    [self.navigationBar cx_setBackgroudColor:tint];
+                }];
+            }
+            //处理取消
             if (@available(iOS 10.0, *)) {
-                
                 [coor notifyWhenInteractionChangesUsingBlock:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
                     if ([context isCancelled]) {
                         NSLog(@"==1==:%@",fromVC);
-                        UIColor *color = [UIColor purpleColor];
-                        color = [color colorWithAlphaComponent:fromVC.navBarAlpha];
-                        UIImage *image = [UIImage imageWithColor:color];
-                        [self.navigationBar cx_setBackgroudImage:image];
+                        UIColor *tint = navigationController.navigationBar.barTintColor;
+                        NSLog(@"tint1:%@",tint);
+                        tint = [tint colorWithAlphaComponent:fromVC.navBarAlpha];
+                        NSLog(@"tint2:%@",tint);
+                        [self.navigationBar cx_setBackgroudColor:tint];
+                    }else {
+                        NSLog(@"==2==");
+                    }
+                }];
+            }else {
+                [coor notifyWhenInteractionEndsUsingBlock:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+                    if ([context isCancelled]) {
+                        NSLog(@"==1==:%@",fromVC);
+                        UIColor *tint = navigationController.navigationBar.barTintColor;
+                        NSLog(@"tint1:%@",tint);
+                        tint = [tint colorWithAlphaComponent:toVC.navBarAlpha];
+                        NSLog(@"tint2:%@",tint);
+                        [self.navigationBar cx_setBackgroudColor:tint];
                     }else {
                         NSLog(@"==2==");
                     }
@@ -107,11 +136,15 @@
     }
 }
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    NSLog(@"didShowViewController:%@",viewController);
-    UIColor *color = [UIColor purpleColor];
-    color = [color colorWithAlphaComponent:viewController.navBarAlpha];
-    UIImage *image = [UIImage imageWithColor:color];
-    [self.navigationBar cx_setBackgroudImage:image];
+    NSLog(@"didShowViewController:%@==%@",viewController,navigationController.viewControllers);
+    if (!self.useCustom) {
+        return;
+    }
+    UIColor *tint = navigationController.navigationBar.barTintColor;
+    NSLog(@"tint1:%@",tint);
+    tint = [tint colorWithAlphaComponent:viewController.navBarAlpha];
+    NSLog(@"tint2:%@",tint);
+    [self.navigationBar cx_setBackgroudColor:tint];
 }
 
 @end
