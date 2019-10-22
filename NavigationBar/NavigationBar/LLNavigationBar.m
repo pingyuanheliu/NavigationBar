@@ -53,11 +53,6 @@
     NSLog(@"didMoveToWindow:%@==%@", NSStringFromCGRect(self.frame),self.subviews);
 }
 
-//- (void)layoutSubviews {
-//    [super layoutSubviews];
-//    NSLog(@"===:%@",self.subviews);
-//}
-
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

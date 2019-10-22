@@ -8,6 +8,7 @@
 
 #import "B2ViewController.h"
 #import "UIViewController+handle.h"
+#import "UINavigationController+FDFullscreenPopGesture.h"
 
 @interface B2ViewController ()
 
@@ -16,6 +17,15 @@
 @end
 
 @implementation B2ViewController
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        self.fd_prefersNavigationBarHidden = NO;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

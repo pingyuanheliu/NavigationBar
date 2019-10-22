@@ -41,18 +41,10 @@
     rView.userInteractionEnabled = YES;
     [rView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView:)]];
     [self.listCV addSubview:rView];
-    //
-    NSLog(@"bImage1:%@",[self.navigationController.navigationBar shadowImage]);
-    CGFloat offsetY = self.listCV.contentOffset.y;
-    NSLog(@"offsetY1:%f",offsetY);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    NSLog(@"==viewWillAppear1==");
-//    UIColor *color = [UIColor colorWithRed:60.0/255.0 green:131.0/255.0 blue:255.0/255.0 alpha:0.5];
-//    UIImage *image = [UIImage imageWithColor:color];
-//    [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     self.isBarClear = YES;
@@ -80,23 +72,10 @@
         [sender setTitle:@"不透明"];
         UINavigationBar *bar = self.navigationController.navigationBar;
         [bar setTranslucent:YES];
-//        [bar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-//        [bar setShadowImage:[UIImage new]];
-        [UIView animateWithDuration:0.35 animations:^{
-            UIColor *color = [UIColor purpleColor];
-            color = [color colorWithAlphaComponent:0.0];
-            self.navigationController.navigationBar.bgImgV.backgroundColor = color;
-        }];
-        NSLog(@"==YES=frame==:%@==%@==%@",NSStringFromCGRect(self.listCV.frame),NSStringFromCGRect(self.view.frame),NSStringFromUIEdgeInsets(self.listCV.contentInset));
     }else {
         [sender setTitle:@"透明"];
         UINavigationBar *bar = self.navigationController.navigationBar;
         [bar setTranslucent:NO];
-//        UIColor *color = [UIColor orangeColor];
-//        UIImage *image = [UIImage imageWithColor:color];
-//        [bar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
-//        [bar setShadowImage:self.sImage];
-        NSLog(@"==NO=frame==:%@==%@==%@",NSStringFromCGRect(self.listCV.frame),NSStringFromCGRect(self.view.frame),NSStringFromUIEdgeInsets(self.listCV.contentInset));
     }
     NSLog(@"offset:%@==%@",NSStringFromCGPoint(self.listCV.contentOffset), NSStringFromUIEdgeInsets(self.listCV.contentInset));
 }

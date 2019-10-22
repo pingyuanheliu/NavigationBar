@@ -14,13 +14,15 @@
 
 + (void)initialize {
     if (self == [UINavigationBar class]) {
-        NSLog(@"==handle==");
         // 交换方法
-         SEL originalSelector = @selector(didMoveToWindow);
-        SEL swizzledSelector = @selector(et_didMoveToWindow);
+        SEL originalSelector = @selector(didMoveToWindow);
+        SEL swizzledSelector = @selector(cx_didMoveToWindow);
+        // 转换Method
         Method originalMethod = class_getInstanceMethod([self class], originalSelector);
         Method swizzledMethod = class_getInstanceMethod([self class], swizzledSelector);
-        if (class_addMethod([self class], originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(originalMethod))) {
+        // 判断方法是否存在
+        BOOL success = class_addMethod([self class], originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
+        if (success) {
             class_replaceMethod([self class], swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
         }else {
             method_exchangeImplementations(originalMethod, swizzledMethod);
@@ -28,10 +30,9 @@
     }
 }
 
-- (void)et_didMoveToWindow
+- (void)cx_didMoveToWindow
 {
-    [self et_didMoveToWindow];
-    NSLog(@"et_didMoveToWindow:%@=%@",NSStringFromCGRect(self.frame),self.subviews);
+    [self cx_didMoveToWindow];
     if (self.bgImgV == nil) {
         CGRect rect = self.bounds;
         CGFloat margin;
@@ -44,7 +45,6 @@
         }
         rect.origin.y = -margin;
         rect.size.height += margin;
-        NSLog(@"rect1:%@",NSStringFromCGRect(rect));
         self.bgImgV = [[UIImageView alloc] initWithFrame:rect];
         self.bgImgV.backgroundColor = [UIColor clearColor];
         [self insertSubview:self.bgImgV atIndex:0];
@@ -65,7 +65,6 @@
 #pragma mark - Public
 
 - (void)cx_setBackgroudColor:(UIColor *)color {
-    NSLog(@"cx_setBackgroudColor:%@==%@",NSStringFromCGRect(self.frame),self.subviews);
     self.bgImgV.backgroundColor = color;
     [self sendSubviewToBack:self.bgImgV];
     [self setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];

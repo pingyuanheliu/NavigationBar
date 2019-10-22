@@ -33,9 +33,7 @@ static const char NavBarAlphaKey = '\1';
 
 - (void)updateNavBar:(CGFloat)alpha {
     UIColor *tint = self.navigationController.navigationBar.barTintColor;
-    NSLog(@"tint1:%@",tint);
     tint = [tint colorWithAlphaComponent:alpha];
-    NSLog(@"tint2:%@",tint);
     self.navigationController.delegate = self.navigationController;
     [self.navigationController.navigationBar cx_setBackgroudColor:tint];
 }

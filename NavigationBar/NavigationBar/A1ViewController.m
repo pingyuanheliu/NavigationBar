@@ -41,7 +41,7 @@
     self.labTip = [[UILabel alloc] initWithFrame:rect];
     self.labTip.textAlignment = NSTextAlignmentCenter;
     self.labTip.textColor = [UIColor whiteColor];
-    self.labTip.text = @"点击我-隐藏导航栏";
+    self.labTip.text = @"点击我-不隐藏导航栏";
     [rView addSubview:self.labTip];
 }
 
@@ -57,8 +57,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (self.navigationController.navigationBarHidden) {
-        [self.navigationController setNavigationBarHidden:NO animated:YES];
+    if (!self.navigationController.navigationBarHidden) {
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
         self.labTip.text = @"点击我-不隐藏导航栏";
     }
 }

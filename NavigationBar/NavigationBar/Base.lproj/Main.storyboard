@@ -166,6 +166,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="S2D-0U-HsV"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="fd_prefersNavigationBarHidden" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="listCV" destination="EmD-Lj-FIn" id="Rw8-0i-eJE"/>
                         <segue destination="kVI-S6-0gF" kind="show" identifier="B1PushToB2" id="hCP-CS-39V"/>
