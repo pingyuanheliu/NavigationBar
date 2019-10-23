@@ -12,8 +12,8 @@
 
 @property (nonatomic, assign) CGFloat navBarAlpha;
 
-- (void)updateNavBar:(CGFloat)alpha;
-
 + (CGFloat)cx_navTopHeight;
+
+- (void)updateNavBar:(CGFloat)alpha;
 
 @end

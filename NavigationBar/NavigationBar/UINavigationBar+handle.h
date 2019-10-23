@@ -10,8 +10,6 @@
 
 @interface UINavigationBar (handle)
 
-@property (strong, nonatomic) UIImageView *bgImgV;
-
 - (void)cx_setBackgroudColor:(UIColor *)color;
 
 @end

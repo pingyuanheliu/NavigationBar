@@ -9,6 +9,12 @@
 #import "UINavigationBar+handle.h"
 #import <objc/runtime.h>
 
+@interface UINavigationBar ()
+
+@property (strong, nonatomic) UIImageView *bgImgV;
+
+@end
+
 @implementation UINavigationBar (handle)
 
 
