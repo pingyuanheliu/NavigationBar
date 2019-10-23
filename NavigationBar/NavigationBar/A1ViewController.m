@@ -24,9 +24,8 @@
     self.title = @"演示一";
     CGRect rect = [UIScreen mainScreen].bounds;
     CGFloat imgHeight = 251.0*414.0/rect.size.width;
-    CGFloat offset = [UIViewController cx_navTopHeight] + 44.0;
     //
-    self.listCV.contentInset = UIEdgeInsetsMake(imgHeight - offset, 0.0, 0.0, 0.0);
+    self.listCV.contentInset = UIEdgeInsetsMake(imgHeight, 0.0, 0.0, 0.0);
     //
     rect.origin.y = -imgHeight;
     rect.size.height = imgHeight;
