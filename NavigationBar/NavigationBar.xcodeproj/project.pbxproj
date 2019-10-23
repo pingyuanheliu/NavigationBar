@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6A3E7B2F235D7D50006CE67A /* UINavigationController+handle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3E7B2E235D7D50006CE67A /* UINavigationController+handle.m */; };
 		6A3E7B32235D7E28006CE67A /* UIViewController+handle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3E7B31235D7E28006CE67A /* UIViewController+handle.m */; };
-		6A3E7B35235E8626006CE67A /* LLNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3E7B34235E8626006CE67A /* LLNavigationBar.m */; };
 		6A9BECCA235EEC6400794875 /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A9BECC9235EEC6300794875 /* UINavigationController+FDFullscreenPopGesture.m */; };
 		6A9ED89923594BA100757EF1 /* B1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A9ED89823594BA100757EF1 /* B1ViewController.m */; };
 		6A9ED89C23594BAF00757EF1 /* B2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A9ED89B23594BAF00757EF1 /* B2ViewController.m */; };
@@ -35,8 +34,6 @@
 		6A3E7B2E235D7D50006CE67A /* UINavigationController+handle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+handle.m"; sourceTree = "<group>"; };
 		6A3E7B30235D7E28006CE67A /* UIViewController+handle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+handle.h"; sourceTree = "<group>"; };
 		6A3E7B31235D7E28006CE67A /* UIViewController+handle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+handle.m"; sourceTree = "<group>"; };
-		6A3E7B33235E8625006CE67A /* LLNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLNavigationBar.h; sourceTree = "<group>"; };
-		6A3E7B34235E8626006CE67A /* LLNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LLNavigationBar.m; sourceTree = "<group>"; };
 		6A9BECC8235EEC6300794875 /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
 		6A9BECC9235EEC6300794875 /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
 		6A9ED89723594BA100757EF1 /* B1ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = B1ViewController.h; sourceTree = "<group>"; };
@@ -135,8 +132,6 @@
 				6A9ED8A723594C3800757EF1 /* E1ViewController.m */,
 				6A9ED8A923594C4400757EF1 /* E2ViewController.h */,
 				6A9ED8AA23594C4400757EF1 /* E2ViewController.m */,
-				6A3E7B33235E8625006CE67A /* LLNavigationBar.h */,
-				6A3E7B34235E8626006CE67A /* LLNavigationBar.m */,
 				6A9ED8BB235D503200757EF1 /* UINavigationBar+handle.h */,
 				6A9ED8BC235D503200757EF1 /* UINavigationBar+handle.m */,
 				6A3E7B2D235D7D50006CE67A /* UINavigationController+handle.h */,
@@ -224,7 +219,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A3E7B35235E8626006CE67A /* LLNavigationBar.m in Sources */,
 				6A9ED89923594BA100757EF1 /* B1ViewController.m in Sources */,
 				6A9ED8AE23595A8A00757EF1 /* A1ViewController.m in Sources */,
 				6A3E7B2F235D7D50006CE67A /* UINavigationController+handle.m in Sources */,
