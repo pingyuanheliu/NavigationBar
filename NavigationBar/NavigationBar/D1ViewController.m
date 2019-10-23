@@ -55,6 +55,17 @@
     NSLog(@"tap");
 }
 
+#pragma mark - Click Item
+
+- (IBAction)clickHelpItem:(UIBarButtonItem *)sender {
+    UIAlertView *alertV = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                     message:@"该界面演示了自定义提供的导航栏透明/不透明方法\n@property (nonatomic, assign) CGFloat navBarAlpha;"
+                                                    delegate:nil
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles:nil, nil];
+    [alertV show];
+}
+
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

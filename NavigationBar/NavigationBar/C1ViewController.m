@@ -14,6 +14,7 @@
 @interface C1ViewController ()
 
 @property (weak, nonatomic) IBOutlet UICollectionView *listCV;
+@property (strong, nonatomic) UILabel *labTip;
 @property (nonatomic, assign) BOOL isBarClear;
 
 @end
@@ -24,10 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"演示三";
-    self.listCV.backgroundColor = [UIColor lightGrayColor];
     //
-    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"不透明" style:UIBarButtonItemStylePlain target:self action:@selector(clickRight:)];
-    self.navigationItem.rightBarButtonItem = right;
     CGRect rect = [UIScreen mainScreen].bounds;
     CGFloat imgHeight = 251.0*414.0/rect.size.width;
     CGFloat offset = [UIViewController cx_navTopHeight] + 44.0;
@@ -41,6 +39,14 @@
     rView.userInteractionEnabled = YES;
     [rView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView:)]];
     [self.listCV addSubview:rView];
+    //
+    rect.origin.y = 100.0 + offset/2.0;
+    rect.size.height = 60.0;
+    self.labTip = [[UILabel alloc] initWithFrame:rect];
+    self.labTip.textAlignment = NSTextAlignmentCenter;
+    self.labTip.textColor = [UIColor whiteColor];
+    self.labTip.text = @"点击我";
+    [rView addSubview:self.labTip];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -56,28 +62,37 @@
     NSLog(@"==viewDidAppear==");
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat offsetY = scrollView.contentOffset.y;
-    NSLog(@"offsetY:%f",offsetY);
-}
-
 - (void)tapView:(UITapGestureRecognizer *)tap {
     NSLog(@"tap");
-}
-
-- (void)clickRight:(UIBarButtonItem *)sender {
-    NSLog(@"===click right");
     [self setIsBarClear:!self.isBarClear];
     if (self.isBarClear) {
-        [sender setTitle:@"不透明"];
+        [self setTitle:@"透明"];
         UINavigationBar *bar = self.navigationController.navigationBar;
         [bar setTranslucent:YES];
     }else {
-        [sender setTitle:@"透明"];
+        [self setTitle:@"不透明"];
         UINavigationBar *bar = self.navigationController.navigationBar;
         [bar setTranslucent:NO];
     }
     NSLog(@"offset:%@==%@",NSStringFromCGPoint(self.listCV.contentOffset), NSStringFromUIEdgeInsets(self.listCV.contentInset));
+}
+
+#pragma mark - Click Item
+
+- (IBAction)clickHelpItem:(UIBarButtonItem *)sender {
+    UIAlertView *alertV = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                     message:@"该界面演示了系统API提供的导航栏透明/不透明方法\n@property(nonatomic,assign,getter=isTranslucent) BOOL translucent"
+                                                    delegate:nil
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles:nil, nil];
+    [alertV show];
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat offsetY = scrollView.contentOffset.y;
+    NSLog(@"offsetY:%f",offsetY);
 }
 
 #pragma mark - UICollectionViewDataSource

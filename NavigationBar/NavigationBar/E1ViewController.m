@@ -63,6 +63,17 @@
     NSLog(@"tap");
 }
 
+#pragma mark - Click Item
+
+- (IBAction)clickHelpItem:(UIBarButtonItem *)sender {
+    UIAlertView *alertV = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                     message:@"该界面演示了自定义提供的滚动视图，导航栏透明不透明渐变方法\n- (void)updateNavBar:(CGFloat)alpha;"
+                                                    delegate:nil
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles:nil, nil];
+    [alertV show];
+}
+
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {

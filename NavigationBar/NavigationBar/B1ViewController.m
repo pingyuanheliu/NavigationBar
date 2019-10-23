@@ -50,6 +50,17 @@
     NSLog(@"tap");
 }
 
+#pragma mark - Click Item
+
+- (IBAction)clickHelpItem:(UIBarButtonItem *)sender {
+    UIAlertView *alertV = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                     message:@"该界面演示了FDFullscreenPopGesture提供的导航栏隐藏方法\n@property (nonatomic, assign) BOOL fd_prefersNavigationBarHidden;"
+                                                    delegate:nil
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles:nil, nil];
+    [alertV show];
+}
+
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

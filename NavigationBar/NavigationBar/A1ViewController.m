@@ -24,8 +24,9 @@
     self.title = @"演示一";
     CGRect rect = [UIScreen mainScreen].bounds;
     CGFloat imgHeight = 251.0*414.0/rect.size.width;
+    CGFloat offset = [UIViewController cx_navTopHeight];
     //
-    self.listCV.contentInset = UIEdgeInsetsMake(imgHeight, 0.0, 0.0, 0.0);
+    self.listCV.contentInset = UIEdgeInsetsMake(imgHeight - offset, 0.0, 0.0, 0.0);
     //
     rect.origin.y = -imgHeight;
     rect.size.height = imgHeight;
@@ -35,7 +36,7 @@
     [rView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView:)]];
     [self.listCV addSubview:rView];
     //
-    rect.origin.y = 100.0;
+    rect.origin.y = 100.0 + offset/2.0;
     rect.size.height = 60.0;
     self.labTip = [[UILabel alloc] initWithFrame:rect];
     self.labTip.textAlignment = NSTextAlignmentCenter;
@@ -62,6 +63,16 @@
     }
 }
 
+#pragma mark - Click Item
+
+- (IBAction)clickHelpItem:(UIBarButtonItem *)sender {
+    UIAlertView *alertV = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                     message:@"该界面演示了系统API提供的导航栏隐藏方法\n- (void)setNavigationBarHidden:(BOOL)hidden animated:(BOOL)animated;"
+                                                    delegate:nil
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles:nil, nil];
+    [alertV show];
+}
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

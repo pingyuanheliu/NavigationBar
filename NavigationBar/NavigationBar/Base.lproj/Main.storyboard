@@ -55,7 +55,13 @@
                             <constraint firstAttribute="trailing" secondItem="mwO-3d-ysw" secondAttribute="trailing" id="d9B-fZ-MbN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Rql-Pc-XHn"/>
+                    <navigationItem key="navigationItem" id="0ZW-PX-Jag">
+                        <barButtonItem key="rightBarButtonItem" title="?" id="VzQ-wJ-5y2">
+                            <connections>
+                                <action selector="clickHelpItem:" destination="luA-UQ-kNV" id="CW4-NM-mAs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="listCV" destination="mwO-3d-ysw" id="Oie-2S-dW3"/>
                         <segue destination="cgH-dG-uk4" kind="show" identifier="A1PushToA2" id="xkI-G0-jKj"/>
@@ -165,7 +171,15 @@
                             <constraint firstItem="EmD-Lj-FIn" firstAttribute="top" secondItem="jEz-Nm-PCl" secondAttribute="top" id="yfB-WK-c1P"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="S2D-0U-HsV"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="S2D-0U-HsV">
+                        <barButtonItem key="rightBarButtonItem" title="?" id="19Z-1V-Adk">
+                            <connections>
+                                <action selector="clickHelpItem:" destination="rDi-DW-tUW" id="7JW-Ve-lCZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="fd_prefersNavigationBarHidden" value="YES"/>
                     </userDefinedRuntimeAttributes>
@@ -224,7 +238,13 @@
                             <constraint firstItem="xyB-wE-D1C" firstAttribute="leading" secondItem="OOE-Cf-qoX" secondAttribute="leading" id="pbx-7Y-4B3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="tL8-Ee-BfN"/>
+                    <navigationItem key="navigationItem" id="tL8-Ee-BfN">
+                        <barButtonItem key="rightBarButtonItem" title="?" id="oQf-mN-J99">
+                            <connections>
+                                <action selector="clickHelpItem:" destination="bqI-bG-0HC" id="O4I-fW-85t"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="listCV" destination="xyB-wE-D1C" id="iFI-jK-YNq"/>
                         <segue destination="hHd-YA-alb" kind="show" identifier="C1PushToC2" id="wq7-4E-Nri"/>
@@ -334,7 +354,13 @@
                             <constraint firstAttribute="bottom" secondItem="ZeP-rT-1Xv" secondAttribute="bottom" id="vEg-d0-3aL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="AU0-3e-NZG"/>
+                    <navigationItem key="navigationItem" id="AU0-3e-NZG">
+                        <barButtonItem key="rightBarButtonItem" title="?" id="hPX-LG-Xwd">
+                            <connections>
+                                <action selector="clickHelpItem:" destination="ZNh-3h-2Uq" id="I62-GT-d4W"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="listCV" destination="ZeP-rT-1Xv" id="ngK-lq-jJc"/>
                         <segue destination="qFL-ZF-6pc" kind="show" identifier="D1PushToD2" id="KHY-Bc-c93"/>
@@ -411,7 +437,13 @@
                             <constraint firstItem="4xN-Qb-olu" firstAttribute="top" secondItem="NWy-Zc-gW9" secondAttribute="top" id="q2d-lO-ZMt"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="bxu-q0-rGi"/>
+                    <navigationItem key="navigationItem" id="bxu-q0-rGi">
+                        <barButtonItem key="rightBarButtonItem" title="?" id="Wf3-cq-1To">
+                            <connections>
+                                <action selector="clickHelpItem:" destination="1h3-18-etc" id="LSC-Fp-Nrj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="listCV" destination="4xN-Qb-olu" id="8aX-GL-iH9"/>
                         <segue destination="e6p-7F-FBa" kind="show" identifier="E1PushToE2" id="afZ-vv-9x0"/>
@@ -587,13 +619,13 @@
         <scene sceneID="rU6-1q-4ST">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Sy-ol-6D8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="演示一" id="ntd-BU-GtR"/>
+                    <tabBarItem key="tabBarItem" title="演示一" image="icon" id="ntd-BU-GtR"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GZu-h9-dVe">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="0.40934244790000002" green="0.7619628906" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.23529411759999999" green="0.51372549020000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -611,7 +643,7 @@
         <scene sceneID="8nH-ie-zzX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uIa-tu-JML" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="演示二" id="yZ6-xP-JC5"/>
+                    <tabBarItem key="tabBarItem" title="演示二" image="icon" id="yZ6-xP-JC5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4DA-nu-bCn">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -638,13 +670,13 @@
         <scene sceneID="C7T-iS-icg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="W5V-qF-MCQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="演示三" id="CQ1-Ds-vpe"/>
+                    <tabBarItem key="tabBarItem" title="演示三" image="icon" id="CQ1-Ds-vpe"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CeX-WD-3ps">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="1" green="0.07421875" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.23529411759999999" green="0.51372549020000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -665,13 +697,13 @@
         <scene sceneID="83r-rW-VLF">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NuN-nS-VZl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="演示四" id="yRM-Yw-hm7"/>
+                    <tabBarItem key="tabBarItem" title="演示四" image="icon" id="yRM-Yw-hm7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VsB-XM-B8b">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="0.86666666670000003" green="0.18823529410000001" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.23529411759999999" green="0.51372549020000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -692,13 +724,13 @@
         <scene sceneID="hjQ-RN-gal">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eSc-1K-8NQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="演示五" id="VDX-gC-YSD"/>
+                    <tabBarItem key="tabBarItem" title="演示五" image="icon" id="VDX-gC-YSD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WVC-K9-5GZ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="0.92941176469999998" green="0.2901960784" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.23529411759999999" green="0.51372549020000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -716,4 +748,7 @@
             <point key="canvasLocation" x="-852.17391304347836" y="5105.3571428571422"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon" width="30" height="30"/>
+    </resources>
 </document>
