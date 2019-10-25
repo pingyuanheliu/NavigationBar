@@ -13,6 +13,7 @@
 //设置导航栏透明度
 @property (nonatomic, assign) CGFloat navBarAlpha;
 
+//状态栏/安全区域高度
 + (CGFloat)cx_navTopHeight;
 
 //更新导航栏背景色
