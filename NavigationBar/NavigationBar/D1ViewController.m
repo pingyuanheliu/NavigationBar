@@ -8,8 +8,7 @@
 
 #import "D1ViewController.h"
 #import "UIViewController+handle.h"
-#import "UINavigationBar+handle.h"
-#import "UINavigationController+handle.h"
+#import <XRNavigationBar/XRNavigationBar.h>
 
 @interface D1ViewController ()
 
@@ -24,8 +23,8 @@
     self = [super initWithCoder:coder];
     if (self) {
         NSLog(@"==D1ViewController==:%@",self.navigationController);
-        self.navigationController.useCustom = YES;
-        self.navBarAlpha = 0.0;
+        self.navigationController.xr_useBarColor = YES;
+        self.xr_navBarAlpha = 0.0;
     }
     return self;
 }
@@ -35,9 +34,9 @@
     // Do any additional setup after loading the view.
     self.title = @"演示四";
     NSLog(@"==1==:%@===%@",self.navigationController,self.navigationController.delegate);
-    [self updateNavBar:0.0];
+    [self xr_updateNavigationBar:0.0];
     CGRect rect = [UIScreen mainScreen].bounds;
-    CGFloat imgHeight = 251.0*414.0/rect.size.width;
+    CGFloat imgHeight = floor(251.0*414.0/rect.size.width);
     CGFloat offset = [UIViewController cx_navTopHeight] + 44.0;
     //
     self.listCV.contentInset = UIEdgeInsetsMake(imgHeight - offset, 0.0, 0.0, 0.0);
@@ -59,7 +58,7 @@
 
 - (IBAction)clickHelpItem:(UIBarButtonItem *)sender {
     UIAlertView *alertV = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                     message:@"该界面演示了自定义提供的导航栏透明/不透明方法\n@property (nonatomic, assign) CGFloat navBarAlpha;"
+                                                     message:@"该界面演示了自定义提供的导航栏透明/不透明方法\n@property (nonatomic, assign) CGFloat xr_navBarAlpha;"
                                                     delegate:nil
                                            cancelButtonTitle:@"OK"
                                            otherButtonTitles:nil, nil];

@@ -32,7 +32,7 @@
     // Do any additional setup after loading the view.
     self.title = @"B2";
     CGRect rect = [UIScreen mainScreen].bounds;
-    CGFloat imgHeight = 251.0*414.0/rect.size.width;
+    CGFloat imgHeight = floor(251.0*414.0/rect.size.width);
     CGFloat offset = [UIViewController cx_navTopHeight] + 44.0;
     //
     self.listCV.contentInset = UIEdgeInsetsMake(imgHeight - offset, 0.0, 0.0, 0.0);

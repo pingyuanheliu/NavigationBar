@@ -7,8 +7,8 @@
 //
 
 #import "C2ViewController.h"
-#import "UIImage+Color.h"
 #import "UIViewController+handle.h"
+#import <XRNavigationBar/XRNavigationBar.h>
 
 @interface C2ViewController ()
 
@@ -23,7 +23,7 @@
     // Do any additional setup after loading the view.
     self.title = @"C2";
     CGRect rect = [UIScreen mainScreen].bounds;
-    CGFloat imgHeight = 251.0*414.0/rect.size.width;
+    CGFloat imgHeight = floor(251.0*414.0/rect.size.width);
     CGFloat offset = [UIViewController cx_navTopHeight] + 44.0;
     //
     self.listCV.contentInset = UIEdgeInsetsMake(imgHeight - offset, 0.0, 0.0, 0.0);
@@ -40,10 +40,10 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     UIColor *bColor = [UIColor colorWithRed:60.0/255.0 green:131.0/255.0 blue:255.0/255.0 alpha:1.0];
-    UIImage *bImage = [UIImage imageWithColor:bColor];
+    UIImage *bImage = [UIImage xr_imageWithColor:bColor];
     [self.navigationController.navigationBar setBackgroundImage:bImage forBarMetrics:UIBarMetricsDefault];
     UIColor *sColor = [UIColor purpleColor];
-    UIImage *sImage = [UIImage imageWithColor:sColor];
+    UIImage *sImage = [UIImage xr_imageWithColor:sColor];
     [self.navigationController.navigationBar setShadowImage:sImage];
 }
 

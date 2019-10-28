@@ -8,8 +8,7 @@
 
 #import "D2ViewController.h"
 #import "UIViewController+handle.h"
-#import "UINavigationBar+handle.h"
-#import "UINavigationController+handle.h"
+#import <XRNavigationBar/XRNavigationBar.h>
 
 @interface D2ViewController ()
 
@@ -23,9 +22,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"D2";
-    self.navBarAlpha = 1.0;
+    self.xr_navBarAlpha = 1.0;
     CGRect rect = [UIScreen mainScreen].bounds;
-    CGFloat imgHeight = 251.0*414.0/rect.size.width;
+    CGFloat imgHeight = floor(251.0*414.0/rect.size.width);
     CGFloat offset = [UIViewController cx_navTopHeight] + 44.0;
     //
     self.listCV.contentInset = UIEdgeInsetsMake(imgHeight - offset, 0.0, 0.0, 0.0);

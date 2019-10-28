@@ -14,6 +14,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6AFFDB532366B50100C8B42C"
+               BuildableName = "XRNavigationBar.framework"
+               BlueprintName = "XRNavigationBar"
+               ReferencedContainer = "container:NavigationBar.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "6AFD3D852357F86B00A820DC"
                BuildableName = "NavigationBar.app"
                BlueprintName = "NavigationBar"

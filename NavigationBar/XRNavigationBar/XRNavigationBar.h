@@ -8,12 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-//! Project version number for XRNavigationBar.
-FOUNDATION_EXPORT double XRNavigationBarVersionNumber;
-
-//! Project version string for XRNavigationBar.
-FOUNDATION_EXPORT const unsigned char XRNavigationBarVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <XRNavigationBar/PublicHeader.h>
-
-
+#import <XRNavigationBar/UIImage+XRColor.h>
+#import <XRNavigationBar/UINavigationBar+XRColor.h>
+#import <XRNavigationBar/UIViewController+XRColor.h>
+#import <XRNavigationBar/UINavigationController+XR.h>

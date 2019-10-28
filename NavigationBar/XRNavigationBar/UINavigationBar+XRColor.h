@@ -12,6 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UINavigationBar (XRColor)
 
+/**
+ 设置导航栏颜色
+ 
+ @param color 颜色值
+ */
+- (void)xr_setBarColor:(UIColor *)color;
+
 @end
 
 NS_ASSUME_NONNULL_END

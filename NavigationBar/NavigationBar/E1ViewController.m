@@ -8,9 +8,7 @@
 
 #import "E1ViewController.h"
 #import "UIViewController+handle.h"
-#import "UIImage+Color.h"
-#import "UINavigationBar+handle.h"
-#import "UINavigationController+handle.h"
+#import <XRNavigationBar/XRNavigationBar.h>
 
 @interface E1ViewController ()<UIScrollViewDelegate>
 
@@ -26,8 +24,8 @@
     self = [super initWithCoder:coder];
     if (self) {
         NSLog(@"==E1ViewController==:%@",self.navigationController);
-        self.navigationController.useCustom = YES;
-        self.navBarAlpha = 0.0;
+        self.navigationController.xr_useBarColor = YES;
+        self.xr_navBarAlpha = 0.0;
     }
     return self;
 }
@@ -37,9 +35,9 @@
     // Do any additional setup after loading the view.
     self.title = @"演示五";
     self.beginDragging = NO;
-    [self updateNavBar:0.0];
+    [self xr_updateNavigationBar:0.0];
     CGRect rect = [UIScreen mainScreen].bounds;
-    CGFloat imgHeight = 251.0*414.0/rect.size.width;
+    CGFloat imgHeight = floor(251.0*414.0/rect.size.width);
     CGFloat navHeight = [UIViewController cx_navTopHeight] + 44.0;
     //
     self.listCV.contentInset = UIEdgeInsetsMake(imgHeight - navHeight, 0.0, 0.0, 0.0);
@@ -67,7 +65,7 @@
 
 - (IBAction)clickHelpItem:(UIBarButtonItem *)sender {
     UIAlertView *alertV = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                     message:@"该界面演示了自定义提供的滚动视图，导航栏透明不透明渐变方法\n- (void)updateNavBar:(CGFloat)alpha;"
+                                                     message:@"该界面演示了自定义提供的滚动视图，导航栏透明不透明渐变方法\n- (void)xr_updateNavigationBar:(CGFloat)barAlpha;"
                                                     delegate:nil
                                            cancelButtonTitle:@"OK"
                                            otherButtonTitles:nil, nil];
@@ -84,7 +82,7 @@
     CGFloat offsetY = scrollView.contentOffset.y;
     if (self.beginDragging) {
         CGRect rect = [UIScreen mainScreen].bounds;
-        CGFloat imgHeight = 251.0*414.0/rect.size.width;
+        CGFloat imgHeight = floor(251.0*414.0/rect.size.width);
         CGFloat navHeight = [UIViewController cx_navTopHeight] + 44.0;
         CGFloat height = MAX(1.0, imgHeight - navHeight);
         offsetY = offsetY + imgHeight;
@@ -96,9 +94,8 @@
         }else {
             alpha = 1.0;
         }
-        self.navBarAlpha = alpha;
-        NSLog(@"offsetY:%f alpha:%f",offsetY, alpha);
-        [self updateNavBar:alpha];
+        self.xr_navBarAlpha = alpha;
+        [self xr_updateNavigationBar:alpha];
     }else {
         NSLog(@"not drag offsetY:%f",offsetY);
     }

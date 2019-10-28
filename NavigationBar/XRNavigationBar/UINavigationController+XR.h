@@ -10,7 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UINavigationController (XR)
+@interface UINavigationController (XR) <UINavigationControllerDelegate>
+
+//是否使用子定义导航背景颜色
+@property (nonatomic, assign) BOOL xr_useBarColor;
 
 @end
 
