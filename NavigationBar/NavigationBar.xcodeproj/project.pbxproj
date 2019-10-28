@@ -27,7 +27,42 @@
 		6AFD3D932357F88F00A820DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AFD3D922357F88F00A820DC /* Assets.xcassets */; };
 		6AFD3D962357F88F00A820DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFD3D942357F88F00A820DC /* LaunchScreen.storyboard */; };
 		6AFD3D992357F88F00A820DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AFD3D982357F88F00A820DC /* main.m */; };
+		6AFFDB582366B50100C8B42C /* XRNavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AFFDB562366B50100C8B42C /* XRNavigationBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6AFFDB5B2366B50100C8B42C /* XRNavigationBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFFDB542366B50100C8B42C /* XRNavigationBar.framework */; };
+		6AFFDB5C2366B50100C8B42C /* XRNavigationBar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFFDB542366B50100C8B42C /* XRNavigationBar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6AFFDB632366B5AA00C8B42C /* UIImage+XRColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AFFDB612366B5AA00C8B42C /* UIImage+XRColor.h */; };
+		6AFFDB642366B5AA00C8B42C /* UIImage+XRColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AFFDB622366B5AA00C8B42C /* UIImage+XRColor.m */; };
+		6AFFDB672366B5D400C8B42C /* UINavigationBar+XRColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AFFDB652366B5D400C8B42C /* UINavigationBar+XRColor.h */; };
+		6AFFDB682366B5D400C8B42C /* UINavigationBar+XRColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AFFDB662366B5D400C8B42C /* UINavigationBar+XRColor.m */; };
+		6AFFDB6B2366B5F000C8B42C /* UINavigationController+XR.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AFFDB692366B5F000C8B42C /* UINavigationController+XR.h */; };
+		6AFFDB6C2366B5F000C8B42C /* UINavigationController+XR.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AFFDB6A2366B5F000C8B42C /* UINavigationController+XR.m */; };
+		6AFFDB6F2366B61D00C8B42C /* UIViewController+XRColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AFFDB6D2366B61D00C8B42C /* UIViewController+XRColor.h */; };
+		6AFFDB702366B61D00C8B42C /* UIViewController+XRColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AFFDB6E2366B61D00C8B42C /* UIViewController+XRColor.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6AFFDB592366B50100C8B42C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6AFD3D7E2357F86A00A820DC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6AFFDB532366B50100C8B42C;
+			remoteInfo = XRNavigationBar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6AFFDB602366B50100C8B42C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6AFFDB5C2366B50100C8B42C /* XRNavigationBar.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6A3E7B2D235D7D50006CE67A /* UINavigationController+handle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+handle.h"; sourceTree = "<group>"; };
@@ -68,10 +103,29 @@
 		6AFD3D952357F88F00A820DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6AFD3D972357F88F00A820DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6AFD3D982357F88F00A820DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6AFFDB542366B50100C8B42C /* XRNavigationBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XRNavigationBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AFFDB562366B50100C8B42C /* XRNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XRNavigationBar.h; sourceTree = "<group>"; };
+		6AFFDB572366B50100C8B42C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AFFDB612366B5AA00C8B42C /* UIImage+XRColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+XRColor.h"; sourceTree = "<group>"; };
+		6AFFDB622366B5AA00C8B42C /* UIImage+XRColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+XRColor.m"; sourceTree = "<group>"; };
+		6AFFDB652366B5D400C8B42C /* UINavigationBar+XRColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+XRColor.h"; sourceTree = "<group>"; };
+		6AFFDB662366B5D400C8B42C /* UINavigationBar+XRColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+XRColor.m"; sourceTree = "<group>"; };
+		6AFFDB692366B5F000C8B42C /* UINavigationController+XR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+XR.h"; sourceTree = "<group>"; };
+		6AFFDB6A2366B5F000C8B42C /* UINavigationController+XR.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+XR.m"; sourceTree = "<group>"; };
+		6AFFDB6D2366B61D00C8B42C /* UIViewController+XRColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XRColor.h"; sourceTree = "<group>"; };
+		6AFFDB6E2366B61D00C8B42C /* UIViewController+XRColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+XRColor.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		6AFD3D832357F86B00A820DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AFFDB5B2366B50100C8B42C /* XRNavigationBar.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AFFDB512366B50100C8B42C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -95,6 +149,7 @@
 			children = (
 				6A9BECC7235EEC6300794875 /* FDFullscreenPopGesture */,
 				6AFD3D882357F86B00A820DC /* NavigationBar */,
+				6AFFDB552366B50100C8B42C /* XRNavigationBar */,
 				6AFD3D872357F86B00A820DC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				6AFD3D862357F86B00A820DC /* NavigationBar.app */,
+				6AFFDB542366B50100C8B42C /* XRNavigationBar.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -149,7 +205,39 @@
 			path = NavigationBar;
 			sourceTree = "<group>";
 		};
+		6AFFDB552366B50100C8B42C /* XRNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				6AFFDB562366B50100C8B42C /* XRNavigationBar.h */,
+				6AFFDB572366B50100C8B42C /* Info.plist */,
+				6AFFDB612366B5AA00C8B42C /* UIImage+XRColor.h */,
+				6AFFDB622366B5AA00C8B42C /* UIImage+XRColor.m */,
+				6AFFDB652366B5D400C8B42C /* UINavigationBar+XRColor.h */,
+				6AFFDB662366B5D400C8B42C /* UINavigationBar+XRColor.m */,
+				6AFFDB692366B5F000C8B42C /* UINavigationController+XR.h */,
+				6AFFDB6A2366B5F000C8B42C /* UINavigationController+XR.m */,
+				6AFFDB6D2366B61D00C8B42C /* UIViewController+XRColor.h */,
+				6AFFDB6E2366B61D00C8B42C /* UIViewController+XRColor.m */,
+			);
+			path = XRNavigationBar;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		6AFFDB4F2366B50100C8B42C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AFFDB6B2366B5F000C8B42C /* UINavigationController+XR.h in Headers */,
+				6AFFDB672366B5D400C8B42C /* UINavigationBar+XRColor.h in Headers */,
+				6AFFDB6F2366B61D00C8B42C /* UIViewController+XRColor.h in Headers */,
+				6AFFDB632366B5AA00C8B42C /* UIImage+XRColor.h in Headers */,
+				6AFFDB582366B50100C8B42C /* XRNavigationBar.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		6AFD3D852357F86B00A820DC /* NavigationBar */ = {
@@ -159,15 +247,35 @@
 				6AFD3D822357F86B00A820DC /* Sources */,
 				6AFD3D832357F86B00A820DC /* Frameworks */,
 				6AFD3D842357F86B00A820DC /* Resources */,
+				6AFFDB602366B50100C8B42C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6AFFDB5A2366B50100C8B42C /* PBXTargetDependency */,
 			);
 			name = NavigationBar;
 			productName = NavigationBar;
 			productReference = 6AFD3D862357F86B00A820DC /* NavigationBar.app */;
 			productType = "com.apple.product-type.application";
+		};
+		6AFFDB532366B50100C8B42C /* XRNavigationBar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6AFFDB5F2366B50100C8B42C /* Build configuration list for PBXNativeTarget "XRNavigationBar" */;
+			buildPhases = (
+				6AFFDB4F2366B50100C8B42C /* Headers */,
+				6AFFDB502366B50100C8B42C /* Sources */,
+				6AFFDB512366B50100C8B42C /* Frameworks */,
+				6AFFDB522366B50100C8B42C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XRNavigationBar;
+			productName = XRNavigationBar;
+			productReference = 6AFFDB542366B50100C8B42C /* XRNavigationBar.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -179,6 +287,9 @@
 				ORGANIZATIONNAME = LL;
 				TargetAttributes = {
 					6AFD3D852357F86B00A820DC = {
+						CreatedOnToolsVersion = 10.2;
+					};
+					6AFFDB532366B50100C8B42C = {
 						CreatedOnToolsVersion = 10.2;
 					};
 				};
@@ -197,6 +308,7 @@
 			projectRoot = "";
 			targets = (
 				6AFD3D852357F86B00A820DC /* NavigationBar */,
+				6AFFDB532366B50100C8B42C /* XRNavigationBar */,
 			);
 		};
 /* End PBXProject section */
@@ -209,6 +321,13 @@
 				6AFD3D962357F88F00A820DC /* LaunchScreen.storyboard in Resources */,
 				6AFD3D932357F88F00A820DC /* Assets.xcassets in Resources */,
 				6AFD3D912357F86B00A820DC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AFFDB522366B50100C8B42C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +358,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6AFFDB502366B50100C8B42C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AFFDB642366B5AA00C8B42C /* UIImage+XRColor.m in Sources */,
+				6AFFDB682366B5D400C8B42C /* UINavigationBar+XRColor.m in Sources */,
+				6AFFDB702366B61D00C8B42C /* UIViewController+XRColor.m in Sources */,
+				6AFFDB6C2366B5F000C8B42C /* UINavigationController+XR.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6AFFDB5A2366B50100C8B42C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6AFFDB532366B50100C8B42C /* XRNavigationBar */;
+			targetProxy = 6AFFDB592366B50100C8B42C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6AFD3D8F2357F86B00A820DC /* Main.storyboard */ = {
@@ -415,6 +553,54 @@
 			};
 			name = Release;
 		};
+		6AFFDB5D2366B50100C8B42C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				INFOPLIST_FILE = XRNavigationBar/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.richinfo.XRNavigationBar;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6AFFDB5E2366B50100C8B42C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				INFOPLIST_FILE = XRNavigationBar/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.richinfo.XRNavigationBar;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -432,6 +618,15 @@
 			buildConfigurations = (
 				6AFD3D9D2357F88F00A820DC /* Debug */,
 				6AFD3D9E2357F88F00A820DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6AFFDB5F2366B50100C8B42C /* Build configuration list for PBXNativeTarget "XRNavigationBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AFFDB5D2366B50100C8B42C /* Debug */,
+				6AFFDB5E2366B50100C8B42C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
