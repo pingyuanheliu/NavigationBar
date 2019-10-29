@@ -11,23 +11,134 @@
 #import "UINavigationBar+XRColor.h"
 #import <objc/runtime.h>
 
+typedef void (^XRViewControllerWillAppearInjectBlock)(UIViewController *viewController, BOOL animated);
+
+@interface UIViewController (Private)
+
+@property (nonatomic, copy) XRViewControllerWillAppearInjectBlock xr_willAppearInjectBlock;
+
+@end
+
+@implementation UIViewController (Private)
+
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if (self == [UIViewController self]) {
+            // 交换ViewWillAppear
+            [UIViewController xr_exchangeViewWillAppear];
+            // 交换ViewWillDisappear
+            [UIViewController xr_exchangeViewWillDisappear];
+        }
+    });
+}
+
+#pragma mark - Private Swizzle
+
++ (void)xr_exchangeViewWillAppear {
+    // 交换方法
+    SEL originalSelector = @selector(viewWillAppear:);
+    SEL swizzledSelector = @selector(xr_viewWillAppear:);
+    // 转换Method
+    Method originalMethod = class_getInstanceMethod([self class], originalSelector);
+    Method swizzledMethod = class_getInstanceMethod([self class], swizzledSelector);
+    // 判断方法是否存在
+    BOOL success = class_addMethod([self class], originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
+    if (success) {
+        class_replaceMethod([self class], swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
+    }else {
+        method_exchangeImplementations(originalMethod, swizzledMethod);
+    }
+}
+
++ (void)xr_exchangeViewWillDisappear{
+    // 交换方法
+    SEL originalSelector = @selector(viewWillDisappear:);
+    SEL swizzledSelector = @selector(xr_viewWillDisappear:);
+    // 转换Method
+    Method originalMethod = class_getInstanceMethod([self class], originalSelector);
+    Method swizzledMethod = class_getInstanceMethod([self class], swizzledSelector);
+    // 判断方法是否存在
+    BOOL success = class_addMethod([self class], originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
+    if (success) {
+        class_replaceMethod([self class], swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
+    }else {
+        method_exchangeImplementations(originalMethod, swizzledMethod);
+    }
+}
+
+#pragma mark - Swizzled method
+
+- (void)xr_viewWillAppear:(BOOL)animated {
+    [self xr_viewWillAppear:animated];
+    NSLog(@"==xr_viewWillAppear==:%@",self);
+    if (self.xr_willAppearInjectBlock) {
+        self.xr_willAppearInjectBlock(self, animated);
+    }
+}
+
+- (void)xr_viewWillDisappear:(BOOL)animated {
+    [self xr_viewWillDisappear:animated];
+    NSLog(@"==xr_viewWillDisappear==:%@",self);
+}
+
+#pragma mark - Get & Set
+
+- (XRViewControllerWillAppearInjectBlock)xr_willAppearInjectBlock {
+    return objc_getAssociatedObject(self, @selector(xr_willAppearInjectBlock));
+}
+
+- (void)setXr_willAppearInjectBlock:(XRViewControllerWillAppearInjectBlock)xr_willAppearInjectBlock {
+    objc_setAssociatedObject(self, @selector(xr_willAppearInjectBlock), xr_willAppearInjectBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+@end
+
 @implementation UINavigationController (XR)
 
-+ (void)initialize {
-    if (self == [UINavigationController self]) {
-        // 交换方法
-        SEL originalSelector = NSSelectorFromString(@"_updateInteractiveTransition:");
-        SEL swizzledSelector = NSSelectorFromString(@"xr_updateInteractiveTransition:");
-        // 转换Method
-        Method originalMethod = class_getInstanceMethod([self class], originalSelector);
-        Method swizzledMethod = class_getInstanceMethod([self class], swizzledSelector);
-        // 判断方法是否存在
-        BOOL success = class_addMethod([self class], originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
-        if (success) {
-            class_replaceMethod([self class], swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
-        }else {
-            method_exchangeImplementations(originalMethod, swizzledMethod);
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if (self == [UINavigationController self]) {
+            // 交换Transition
+            [UINavigationController xr_exchangeTransition];
+            // 交换push
+            [UINavigationController xr_exchangePush];
         }
+    });
+}
+
+#pragma mark - Private Swizzle
+
++ (void)xr_exchangeTransition {
+    // 交换方法
+    SEL originalSelector = @selector(updateInteractiveTransition:);
+    SEL swizzledSelector = @selector(xr_updateInteractiveTransition:);
+    // 转换Method
+    Method originalMethod = class_getInstanceMethod([self class], originalSelector);
+    Method swizzledMethod = class_getInstanceMethod([self class], swizzledSelector);
+    // 判断方法是否存在
+    BOOL success = class_addMethod([self class], originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
+    if (success) {
+        class_replaceMethod([self class], swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
+    }else {
+        method_exchangeImplementations(originalMethod, swizzledMethod);
+    }
+}
+
++ (void)xr_exchangePush {
+    // 交换方法
+    SEL originalSelector = @selector(pushViewController:animated:);
+    SEL swizzledSelector = @selector(xr_pushViewController:animated:);
+    // 转换Method
+    Method originalMethod = class_getInstanceMethod([self class], originalSelector);
+    Method swizzledMethod = class_getInstanceMethod([self class], swizzledSelector);
+    // 判断方法是否存在
+    BOOL success = class_addMethod([self class], originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
+    if (success) {
+        class_replaceMethod([self class], swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
+    }else {
+        method_exchangeImplementations(originalMethod, swizzledMethod);
     }
 }
 
@@ -52,6 +163,28 @@
             // 更新导航栏
             [self xr_setBarAlpha:curAlpha navigationController:topVC.navigationController];
         }
+    }
+}
+
+- (void)xr_pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    NSLog(@"==xr_pushViewController1==:%@",viewController);
+    __weak typeof(self) weakSelf = self;
+    XRViewControllerWillAppearInjectBlock block = ^(UIViewController *vc, BOOL ani) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        if (strongSelf) {
+            NSLog(@"==hidden 2==:%@=",strongSelf);
+            [strongSelf setNavigationBarHidden:vc.xr_navBarHidden animated:ani];
+        }
+    };
+    viewController.xr_willAppearInjectBlock = block;
+    // 将要消失
+    UIViewController *willDisappearVC = self.viewControllers.lastObject;
+    NSLog(@"==xr_pushViewController2==:%@",willDisappearVC);
+    if (willDisappearVC && !willDisappearVC.xr_willAppearInjectBlock) {
+        willDisappearVC.xr_willAppearInjectBlock = block;
+    }
+    if (![self.viewControllers containsObject:viewController]) {
+        [self xr_pushViewController:viewController animated:animated];
     }
 }
 

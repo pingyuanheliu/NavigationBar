@@ -35,7 +35,6 @@
     // Do any additional setup after loading the view.
     self.title = @"演示五";
     self.beginDragging = NO;
-    [self xr_updateNavigationBar:0.0];
     CGRect rect = [UIScreen mainScreen].bounds;
     CGFloat imgHeight = floor(251.0*414.0/rect.size.width);
     CGFloat navHeight = [UIViewController cx_navTopHeight] + 44.0;

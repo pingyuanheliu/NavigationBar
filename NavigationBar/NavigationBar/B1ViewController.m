@@ -8,7 +8,7 @@
 
 #import "B1ViewController.h"
 #import "UIViewController+handle.h"
-#import "UINavigationController+FDFullscreenPopGesture.h"
+#import <XRNavigationBar/XRNavigationBar.h>
 
 @interface B1ViewController ()
 
@@ -22,7 +22,7 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-        self.fd_prefersNavigationBarHidden = YES;
+        self.xr_navBarHidden = YES;
     }
     return self;
 }
@@ -31,9 +31,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"演示二";
+    NSLog(@"==B1 viewDidLoad==");
     CGRect rect = [UIScreen mainScreen].bounds;
     CGFloat imgHeight = floor(251.0*414.0/rect.size.width);
-    CGFloat offset = [UIViewController cx_navTopHeight] + 44.0;
+    CGFloat offset = [UIViewController cx_navTopHeight];
     //
     self.listCV.contentInset = UIEdgeInsetsMake(imgHeight - offset, 0.0, 0.0, 0.0);
     //
@@ -44,6 +45,16 @@
     rView.userInteractionEnabled = YES;
     [rView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView:)]];
     [self.listCV addSubview:rView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSLog(@"==B1 viewWillAppear==");
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    NSLog(@"==B1 viewWillDisappear==");
 }
 
 - (void)tapView:(UITapGestureRecognizer *)tap {

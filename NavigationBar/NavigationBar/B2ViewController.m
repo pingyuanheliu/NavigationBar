@@ -8,7 +8,7 @@
 
 #import "B2ViewController.h"
 #import "UIViewController+handle.h"
-#import "UINavigationController+FDFullscreenPopGesture.h"
+#import <XRNavigationBar/XRNavigationBar.h>
 
 @interface B2ViewController ()
 
@@ -22,7 +22,7 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-        self.fd_prefersNavigationBarHidden = NO;
+        self.xr_navBarHidden = NO;
     }
     return self;
 }
@@ -31,6 +31,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"B2";
+    NSLog(@"==B2 viewDidLoad==");
     CGRect rect = [UIScreen mainScreen].bounds;
     CGFloat imgHeight = floor(251.0*414.0/rect.size.width);
     CGFloat offset = [UIViewController cx_navTopHeight] + 44.0;
@@ -48,6 +49,16 @@
 
 - (void)tapView:(UITapGestureRecognizer *)tap {
     NSLog(@"tap");
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSLog(@"==B2 viewWillAppear==");
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    NSLog(@"==B2 viewWillDisappear==");
 }
 
 #pragma mark - UICollectionViewDataSource

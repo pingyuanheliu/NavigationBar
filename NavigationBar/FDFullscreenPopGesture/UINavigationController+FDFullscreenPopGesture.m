@@ -97,6 +97,7 @@ typedef void (^_FDViewControllerWillAppearInjectBlock)(UIViewController *viewCon
 {
     // Forward to primary implementation.
     [self fd_viewWillAppear:animated];
+    NSLog(@"==fd_viewWillAppear==:%@",self);
     
     if (self.fd_willAppearInjectBlock) {
         self.fd_willAppearInjectBlock(self, animated);
@@ -107,10 +108,11 @@ typedef void (^_FDViewControllerWillAppearInjectBlock)(UIViewController *viewCon
 {
     // Forward to primary implementation.
     [self fd_viewWillDisappear:animated];
-    
+    NSLog(@"==fd_viewWillDisappear==");
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         UIViewController *viewController = self.navigationController.viewControllers.lastObject;
         if (viewController && !viewController.fd_prefersNavigationBarHidden) {
+            NSLog(@"==hidden 1==");
             [self.navigationController setNavigationBarHidden:NO animated:NO];
         }
     });
@@ -154,6 +156,7 @@ typedef void (^_FDViewControllerWillAppearInjectBlock)(UIViewController *viewCon
 
 - (void)fd_pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
+    NSLog(@"==fd_pushViewController==");
     if (![self.interactivePopGestureRecognizer.view.gestureRecognizers containsObject:self.fd_fullscreenPopGestureRecognizer]) {
         
         // Add our own gesture recognizer to where the onboard screen edge pan gesture recognizer is attached to.
@@ -189,6 +192,7 @@ typedef void (^_FDViewControllerWillAppearInjectBlock)(UIViewController *viewCon
     _FDViewControllerWillAppearInjectBlock block = ^(UIViewController *viewController, BOOL animated) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if (strongSelf) {
+            NSLog(@"==hidden 2==");
             [strongSelf setNavigationBarHidden:viewController.fd_prefersNavigationBarHidden animated:animated];
         }
     };

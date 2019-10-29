@@ -17,22 +17,25 @@
 
 @implementation UINavigationBar (XRColor)
 
-+ (void)initialize {
-    if (self == [UINavigationBar class]) {
-        // 交换方法
-        SEL originalSelector = @selector(didMoveToWindow);
-        SEL swizzledSelector = @selector(xr_didMoveToWindow);
-        // 转换Method
-        Method originalMethod = class_getInstanceMethod([self class], originalSelector);
-        Method swizzledMethod = class_getInstanceMethod([self class], swizzledSelector);
-        // 判断方法是否存在
-        BOOL success = class_addMethod([self class], originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
-        if (success) {
-            class_replaceMethod([self class], swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
-        }else {
-            method_exchangeImplementations(originalMethod, swizzledMethod);
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if (self == [UINavigationBar class]) {
+            // 交换方法
+            SEL originalSelector = @selector(didMoveToWindow);
+            SEL swizzledSelector = @selector(xr_didMoveToWindow);
+            // 转换Method
+            Method originalMethod = class_getInstanceMethod([self class], originalSelector);
+            Method swizzledMethod = class_getInstanceMethod([self class], swizzledSelector);
+            // 判断方法是否存在
+            BOOL success = class_addMethod([self class], originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
+            if (success) {
+                class_replaceMethod([self class], swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
+            }else {
+                method_exchangeImplementations(originalMethod, swizzledMethod);
+            }
         }
-    }
+    });
 }
 
 #pragma mark - Swizzled method

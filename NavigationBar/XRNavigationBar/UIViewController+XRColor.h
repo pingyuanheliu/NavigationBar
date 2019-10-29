@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIViewController (XRColor)
 
+//设置导航栏隐藏/显示
+@property (nonatomic, assign) BOOL xr_navBarHidden;
 //设置导航栏透明度
 @property (nonatomic, assign) CGFloat xr_navBarAlpha;
 

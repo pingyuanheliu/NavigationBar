@@ -34,7 +34,6 @@
     // Do any additional setup after loading the view.
     self.title = @"演示四";
     NSLog(@"==1==:%@===%@",self.navigationController,self.navigationController.delegate);
-    [self xr_updateNavigationBar:0.0];
     CGRect rect = [UIScreen mainScreen].bounds;
     CGFloat imgHeight = floor(251.0*414.0/rect.size.width);
     CGFloat offset = [UIViewController cx_navTopHeight] + 44.0;
