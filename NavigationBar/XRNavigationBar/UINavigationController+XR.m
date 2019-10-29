@@ -7,7 +7,7 @@
 //
 
 #import "UINavigationController+XR.h"
-#import "UIViewController+XRColor.h"
+#import "UIViewController+XR.h"
 #import "UINavigationBar+XRColor.h"
 #import <objc/runtime.h>
 
@@ -27,8 +27,6 @@ typedef void (^XRViewControllerWillAppearInjectBlock)(UIViewController *viewCont
         if (self == [UIViewController self]) {
             // 交换ViewWillAppear
             [UIViewController xr_exchangeViewWillAppear];
-            // 交换ViewWillDisappear
-            [UIViewController xr_exchangeViewWillDisappear];
         }
     });
 }
@@ -51,35 +49,13 @@ typedef void (^XRViewControllerWillAppearInjectBlock)(UIViewController *viewCont
     }
 }
 
-+ (void)xr_exchangeViewWillDisappear{
-    // 交换方法
-    SEL originalSelector = @selector(viewWillDisappear:);
-    SEL swizzledSelector = @selector(xr_viewWillDisappear:);
-    // 转换Method
-    Method originalMethod = class_getInstanceMethod([self class], originalSelector);
-    Method swizzledMethod = class_getInstanceMethod([self class], swizzledSelector);
-    // 判断方法是否存在
-    BOOL success = class_addMethod([self class], originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
-    if (success) {
-        class_replaceMethod([self class], swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
-    }else {
-        method_exchangeImplementations(originalMethod, swizzledMethod);
-    }
-}
-
 #pragma mark - Swizzled method
 
 - (void)xr_viewWillAppear:(BOOL)animated {
     [self xr_viewWillAppear:animated];
-    NSLog(@"==xr_viewWillAppear==:%@",self);
     if (self.xr_willAppearInjectBlock) {
         self.xr_willAppearInjectBlock(self, animated);
     }
-}
-
-- (void)xr_viewWillDisappear:(BOOL)animated {
-    [self xr_viewWillDisappear:animated];
-    NSLog(@"==xr_viewWillDisappear==:%@",self);
 }
 
 #pragma mark - Get & Set
@@ -167,22 +143,22 @@ typedef void (^XRViewControllerWillAppearInjectBlock)(UIViewController *viewCont
 }
 
 - (void)xr_pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    NSLog(@"==xr_pushViewController1==:%@",viewController);
     __weak typeof(self) weakSelf = self;
     XRViewControllerWillAppearInjectBlock block = ^(UIViewController *vc, BOOL ani) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if (strongSelf) {
-            NSLog(@"==hidden 2==:%@=",strongSelf);
             [strongSelf setNavigationBarHidden:vc.xr_navBarHidden animated:ani];
         }
     };
-    viewController.xr_willAppearInjectBlock = block;
+    if (viewController && !viewController.xr_willAppearInjectBlock) {
+        viewController.xr_willAppearInjectBlock = block;
+    }
     // 将要消失
     UIViewController *willDisappearVC = self.viewControllers.lastObject;
-    NSLog(@"==xr_pushViewController2==:%@",willDisappearVC);
     if (willDisappearVC && !willDisappearVC.xr_willAppearInjectBlock) {
         willDisappearVC.xr_willAppearInjectBlock = block;
     }
+    //
     if (![self.viewControllers containsObject:viewController]) {
         [self xr_pushViewController:viewController animated:animated];
     }

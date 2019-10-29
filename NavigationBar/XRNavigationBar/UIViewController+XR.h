@@ -1,8 +1,8 @@
 //
-//  UIViewController+XRColor.h
+//  UIViewController+XR.h
 //  XRNavigationBar
 //
-//  Created by LL on 2019/10/28.
+//  Created by LL on 2019/10/29.
 //  Copyright © 2019 LL. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIViewController (XRColor)
+@interface UIViewController (XR)
 
 //设置导航栏隐藏/显示
 @property (nonatomic, assign) BOOL xr_navBarHidden;

@@ -10,5 +10,5 @@
 
 #import <XRNavigationBar/UIImage+XRColor.h>
 #import <XRNavigationBar/UINavigationBar+XRColor.h>
-#import <XRNavigationBar/UIViewController+XRColor.h>
+#import <XRNavigationBar/UIViewController+XR.h>
 #import <XRNavigationBar/UINavigationController+XR.h>

@@ -1,22 +1,22 @@
 //
-//  B1ViewController.m
+//  B3ViewController.m
 //  NavigationBar
 //
-//  Created by LL on 2019/10/18.
+//  Created by LL on 2019/10/29.
 //  Copyright © 2019 LL. All rights reserved.
 //
 
-#import "B1ViewController.h"
+#import "B3ViewController.h"
 #import "UIViewController+handle.h"
 #import <XRNavigationBar/XRNavigationBar.h>
 
-@interface B1ViewController ()
+@interface B3ViewController ()
 
 @property (weak, nonatomic) IBOutlet UICollectionView *listCV;
 
 @end
 
-@implementation B1ViewController
+@implementation B3ViewController
 
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
@@ -30,11 +30,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"演示二";
-    NSLog(@"==B1 viewDidLoad==");
+    self.title = @"B3";
+    NSLog(@"==B3 viewDidLoad==");
     CGRect rect = [UIScreen mainScreen].bounds;
     CGFloat imgHeight = floor(251.0*414.0/rect.size.width);
-    CGFloat offset = [UIViewController cx_navTopHeight];
+    CGFloat offset = [UIViewController cx_navTopHeight] + 44.0;
     //
     self.listCV.contentInset = UIEdgeInsetsMake(imgHeight - offset, 0.0, 0.0, 0.0);
     //
@@ -47,29 +47,18 @@
     [self.listCV addSubview:rView];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    NSLog(@"==B1 viewWillAppear==");
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    NSLog(@"==B1 viewWillDisappear==");
-}
-
 - (void)tapView:(UITapGestureRecognizer *)tap {
     NSLog(@"tap");
 }
 
-#pragma mark - Click Item
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSLog(@"==B3 viewWillAppear==");
+}
 
-- (IBAction)clickHelpItem:(UIBarButtonItem *)sender {
-    UIAlertView *alertV = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                     message:@"该界面演示了FDFullscreenPopGesture提供的导航栏隐藏方法\n@property (nonatomic, assign) BOOL fd_prefersNavigationBarHidden;"
-                                                    delegate:nil
-                                           cancelButtonTitle:@"OK"
-                                           otherButtonTitles:nil, nil];
-    [alertV show];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    NSLog(@"==B3 viewWillDisappear==");
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -93,7 +82,7 @@
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"B1PushToB2" sender:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout

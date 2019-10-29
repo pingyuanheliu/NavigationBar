@@ -1,17 +1,17 @@
 //
-//  UIViewController+XRColor.m
+//  UIViewController+XR.m
 //  XRNavigationBar
 //
-//  Created by LL on 2019/10/28.
+//  Created by LL on 2019/10/29.
 //  Copyright © 2019 LL. All rights reserved.
 //
 
-#import "UIViewController+XRColor.h"
+#import "UIViewController+XR.h"
 #import "UINavigationBar+XRColor.h"
 #import "UINavigationController+XR.h"
 #import <objc/runtime.h>
 
-@implementation UIViewController (XRColor)
+@implementation UIViewController (XR)
 
 + (void)load {
     static dispatch_once_t onceToken;
@@ -86,7 +86,7 @@
 #pragma mark -
 /**
  更新导航栏
-
+ 
  @param barAlpha 导航栏透明度
  */
 - (void)xr_updateNavigationBar:(CGFloat)barAlpha {

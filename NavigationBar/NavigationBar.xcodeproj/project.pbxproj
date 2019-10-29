@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6A3E7B32235D7E28006CE67A /* UIViewController+handle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3E7B31235D7E28006CE67A /* UIViewController+handle.m */; };
+		6A95F9312367D6AE00D99EBE /* B3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A95F9302367D6AE00D99EBE /* B3ViewController.m */; };
+		6A9B2DEF2367DF1B005FBEF1 /* UIViewController+XR.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A9B2DED2367DF1B005FBEF1 /* UIViewController+XR.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6A9B2DF02367DF1B005FBEF1 /* UIViewController+XR.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B2DEE2367DF1B005FBEF1 /* UIViewController+XR.m */; };
 		6A9ED89923594BA100757EF1 /* B1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A9ED89823594BA100757EF1 /* B1ViewController.m */; };
 		6A9ED89C23594BAF00757EF1 /* B2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A9ED89B23594BAF00757EF1 /* B2ViewController.m */; };
 		6A9ED8A223594BE200757EF1 /* D1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A9ED8A123594BE200757EF1 /* D1ViewController.m */; };
@@ -32,8 +35,6 @@
 		6AFFDB682366B5D400C8B42C /* UINavigationBar+XRColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AFFDB662366B5D400C8B42C /* UINavigationBar+XRColor.m */; };
 		6AFFDB6B2366B5F000C8B42C /* UINavigationController+XR.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AFFDB692366B5F000C8B42C /* UINavigationController+XR.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6AFFDB6C2366B5F000C8B42C /* UINavigationController+XR.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AFFDB6A2366B5F000C8B42C /* UINavigationController+XR.m */; };
-		6AFFDB6F2366B61D00C8B42C /* UIViewController+XRColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AFFDB6D2366B61D00C8B42C /* UIViewController+XRColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6AFFDB702366B61D00C8B42C /* UIViewController+XRColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AFFDB6E2366B61D00C8B42C /* UIViewController+XRColor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,10 @@
 /* Begin PBXFileReference section */
 		6A3E7B30235D7E28006CE67A /* UIViewController+handle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+handle.h"; sourceTree = "<group>"; };
 		6A3E7B31235D7E28006CE67A /* UIViewController+handle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+handle.m"; sourceTree = "<group>"; };
+		6A95F92F2367D6AE00D99EBE /* B3ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = B3ViewController.h; sourceTree = "<group>"; };
+		6A95F9302367D6AE00D99EBE /* B3ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = B3ViewController.m; sourceTree = "<group>"; };
+		6A9B2DED2367DF1B005FBEF1 /* UIViewController+XR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XR.h"; sourceTree = "<group>"; };
+		6A9B2DEE2367DF1B005FBEF1 /* UIViewController+XR.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+XR.m"; sourceTree = "<group>"; };
 		6A9ED89723594BA100757EF1 /* B1ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = B1ViewController.h; sourceTree = "<group>"; };
 		6A9ED89823594BA100757EF1 /* B1ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = B1ViewController.m; sourceTree = "<group>"; };
 		6A9ED89A23594BAF00757EF1 /* B2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = B2ViewController.h; sourceTree = "<group>"; };
@@ -100,8 +105,6 @@
 		6AFFDB662366B5D400C8B42C /* UINavigationBar+XRColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+XRColor.m"; sourceTree = "<group>"; };
 		6AFFDB692366B5F000C8B42C /* UINavigationController+XR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+XR.h"; sourceTree = "<group>"; };
 		6AFFDB6A2366B5F000C8B42C /* UINavigationController+XR.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+XR.m"; sourceTree = "<group>"; };
-		6AFFDB6D2366B61D00C8B42C /* UIViewController+XRColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XRColor.h"; sourceTree = "<group>"; };
-		6AFFDB6E2366B61D00C8B42C /* UIViewController+XRColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+XRColor.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +157,8 @@
 				6A9ED89823594BA100757EF1 /* B1ViewController.m */,
 				6A9ED89A23594BAF00757EF1 /* B2ViewController.h */,
 				6A9ED89B23594BAF00757EF1 /* B2ViewController.m */,
+				6A95F92F2367D6AE00D99EBE /* B3ViewController.h */,
+				6A95F9302367D6AE00D99EBE /* B3ViewController.m */,
 				6A9ED8B223595AA200757EF1 /* C1ViewController.h */,
 				6A9ED8B323595AA200757EF1 /* C1ViewController.m */,
 				6A9ED8B523595AAC00757EF1 /* C2ViewController.h */,
@@ -188,8 +193,8 @@
 				6AFFDB662366B5D400C8B42C /* UINavigationBar+XRColor.m */,
 				6AFFDB692366B5F000C8B42C /* UINavigationController+XR.h */,
 				6AFFDB6A2366B5F000C8B42C /* UINavigationController+XR.m */,
-				6AFFDB6D2366B61D00C8B42C /* UIViewController+XRColor.h */,
-				6AFFDB6E2366B61D00C8B42C /* UIViewController+XRColor.m */,
+				6A9B2DED2367DF1B005FBEF1 /* UIViewController+XR.h */,
+				6A9B2DEE2367DF1B005FBEF1 /* UIViewController+XR.m */,
 			);
 			path = XRNavigationBar;
 			sourceTree = "<group>";
@@ -202,8 +207,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AFFDB672366B5D400C8B42C /* UINavigationBar+XRColor.h in Headers */,
-				6AFFDB6F2366B61D00C8B42C /* UIViewController+XRColor.h in Headers */,
 				6AFFDB632366B5AA00C8B42C /* UIImage+XRColor.h in Headers */,
+				6A9B2DEF2367DF1B005FBEF1 /* UIViewController+XR.h in Headers */,
 				6AFFDB6B2366B5F000C8B42C /* UINavigationController+XR.h in Headers */,
 				6AFFDB582366B50100C8B42C /* XRNavigationBar.h in Headers */,
 			);
@@ -323,6 +328,7 @@
 				6A9ED8AB23594C4400757EF1 /* E2ViewController.m in Sources */,
 				6A9ED8A823594C3800757EF1 /* E1ViewController.m in Sources */,
 				6A9ED8A223594BE200757EF1 /* D1ViewController.m in Sources */,
+				6A95F9312367D6AE00D99EBE /* B3ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,8 +338,8 @@
 			files = (
 				6AFFDB642366B5AA00C8B42C /* UIImage+XRColor.m in Sources */,
 				6AFFDB682366B5D400C8B42C /* UINavigationBar+XRColor.m in Sources */,
-				6AFFDB702366B61D00C8B42C /* UIViewController+XRColor.m in Sources */,
 				6AFFDB6C2366B5F000C8B42C /* UINavigationController+XR.m in Sources */,
+				6A9B2DF02367DF1B005FBEF1 /* UIViewController+XR.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
