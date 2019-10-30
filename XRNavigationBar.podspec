@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
   s.name         = "XRNavigationBar"
   s.version      = "0.0.2"
-  s.summary      = "XRNavigationBar is a component of UINavigationBar."
+  s.summary      = "XRNavigationBar is a collection of category methods for UINavigationBar."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
-  XRNavigationBar is a component of UINavigationBar.
+  XRNavigationBar is a collection of category methods for UINavigationBar. It mainly includes the methods of hidden/not hidden, transparent/not transparent and transparent gradient of NavigationBar.
                    DESC
 
   s.homepage     = "https://github.com/pingyuanheliu/NavigationBar"
