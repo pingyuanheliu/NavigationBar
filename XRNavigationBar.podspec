@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "XRNavigationBar"
-  s.version      = "0.0.2"
+  s.version      = "0.0.1"
   s.summary      = "XRNavigationBar is a collection of category methods for UINavigationBar."
 
   # This description is used to generate tags and improve search results.
