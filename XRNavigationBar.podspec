@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "XRNavigationBar"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "XRNavigationBar is a component of UINavigationBar."
 
   # This description is used to generate tags and improve search results.
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
-      XRNavigationBar is a component of UINavigationBar.
+  XRNavigationBar is a component of UINavigationBar.
                    DESC
 
   s.homepage     = "https://github.com/pingyuanheliu/NavigationBar"
@@ -68,7 +68,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "8.0"
 
   #  When using multiple platforms
-  s.ios.deployment_target = "8.0"
+  # s.ios.deployment_target = "8.0"
   # s.osx.deployment_target = "10.7"
   # s.watchos.deployment_target = "2.0"
   # s.tvos.deployment_target = "9.0"
