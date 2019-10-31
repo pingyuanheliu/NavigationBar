@@ -6,11 +6,11 @@
 ```
 
   
-设置useCustom
+设置xr_useBarColor
 该方法可以设置导航栏是否使用自定义效果。如果设置为YES，则使用自定义；如果设置为NO，则使用系统定义。
 ```
-//是否使用子定义导航背景
-@property (nonatomic, assign) BOOL useCustom;
+//是否使用子定义导航背景颜色
+@property (nonatomic, assign) BOOL xr_useBarColor;
 ```
 
 设置导航栏颜色
@@ -25,17 +25,21 @@
 #import "UIViewController+handle.h"
 ```
 
-设置navBarAlpha
+设置xr_navBarAlpha
 该参数决定了barTintColor的透明度，即影响导航栏透明度。
 ```
 //设置导航栏透明度
-@property (nonatomic, assign) CGFloat navBarAlpha;
+@property (nonatomic, assign) CGFloat xr_navBarAlpha;
 ```
 
 ### 第三步 更新导航栏背景色
 ```
-//更新导航栏背景色
-- (void)updateNavBar:(CGFloat)alpha;
+/**
+ 更新导航栏
+ 
+ @param barAlpha 导航栏透明度
+ */
+- (void)xr_updateNavigationBar:(CGFloat)barAlpha;
 ```
 
 ### pods集成方式
