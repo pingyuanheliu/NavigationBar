@@ -8,27 +8,27 @@
 
 ### 第二步 设置参数 
 
-设置xr_useBarColor
+##### 1、设置xr_useBarColor
 该方法可以设置导航栏是否使用自定义效果。如果设置为YES，则使用自定义；如果设置为NO，则使用系统定义。
 ```
 //是否使用子定义导航背景颜色
 @property (nonatomic, assign) BOOL xr_useBarColor;
 ```
 
-设置导航栏颜色
+##### 2、设置barTintColor
 如果是用自定义导航栏效果，那么需要设置barTintColor。因为自定义的背景颜色是基于barTintColor来设定的。
 ```
 @property(nullable, nonatomic,strong) UIColor *barTintColor;
 ```
 
-设置xr_navBarHidden
+##### 3、设置xr_navBarHidden
 该参数决定了导航栏隐藏/显示
 ```
 //设置导航栏隐藏/显示
 @property (nonatomic, assign) BOOL xr_navBarHidden;
 ```
 
-设置xr_navBarAlpha
+##### 4、设置xr_navBarAlpha
 该参数决定了barTintColor的透明度，即影响导航栏透明度。
 ```
 //设置导航栏透明度
