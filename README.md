@@ -1,11 +1,13 @@
-### 第一步 引入导航栏分类
+### 第一步 引入分类文件
 ```
 #import "UIImage+Color.h"
 #import "UINavigationBar+handle.h"
 #import "UINavigationController+handle.h"
+#import "UIViewController+handle.h"
 ```
 
-  
+### 第二步 设置参数 
+
 设置xr_useBarColor
 该方法可以设置导航栏是否使用自定义效果。如果设置为YES，则使用自定义；如果设置为NO，则使用系统定义。
 ```
@@ -19,10 +21,11 @@
 @property(nullable, nonatomic,strong) UIColor *barTintColor;
 ```
 
-  
-### 第二步 引入视图控制器分类
+设置xr_navBarHidden
+该参数决定了导航栏隐藏/显示
 ```
-#import "UIViewController+handle.h"
+//设置导航栏隐藏/显示
+@property (nonatomic, assign) BOOL xr_navBarHidden;
 ```
 
 设置xr_navBarAlpha
@@ -33,6 +36,8 @@
 ```
 
 ### 第三步 更新导航栏背景色
+该方法非必须调用方法，只有当滚动scrollView时，动态更新导航栏颜色时，才会主动调用。
+比如push/pop视图控制器时，默认会被调用。
 ```
 /**
  更新导航栏
