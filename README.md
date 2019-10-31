@@ -37,3 +37,13 @@
 //更新导航栏背景色
 - (void)updateNavBar:(CGFloat)alpha;
 ```
+
+### pods集成方式
+```
+platform :ios, '8.0'
+use_frameworks!
+
+target 'MyApp' do
+  pod 'XRNavigationBar', '~> 0.0.1'
+end
+```
